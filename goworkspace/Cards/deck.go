@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+type singleCard string
 type deck []string
 
 func (this deck) print() {
@@ -10,4 +11,8 @@ func (this deck) print() {
 		fmt.Println(i, card)
 	}
 
+}
+
+func (this singleCard) print() {
+	fmt.Println(this)
 }

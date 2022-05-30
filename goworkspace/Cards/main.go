@@ -1,11 +1,10 @@
 package main
 
-import "fmt"
-
 func main() {
 
-	card := getNewCard()
-	fmt.Println(card)
+	var card = singleCard(getNewCard())
+	// fmt.Println(card)
+	card.print()
 
 	cards := deck{"Ace of Dimonds", getNewCard()}
 	// fmt.Println(cards)
