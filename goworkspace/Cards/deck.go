@@ -5,6 +5,10 @@ import "fmt"
 type singleCard string
 type deck []string
 
+func newDeck() deck {
+
+}
+
 func (this deck) print() {
 
 	for i, card := range this {
