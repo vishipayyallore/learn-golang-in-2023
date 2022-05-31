@@ -5,9 +5,9 @@ import "fmt"
 type singleCard string
 type deck []string
 
-func newDeck() deck {
-	cards := deck{}
+func getNewDeck() deck {
 
+	cards := deck{}
 	cardSuits := []string{"Spades", "Diamonds", "Hearts", "Clubs"}
 	cardValues := []string{"Ace", "Two", "Three", "Four"}
 
@@ -18,6 +18,10 @@ func newDeck() deck {
 	}
 
 	return cards
+}
+
+func getNewCard() string {
+	return "Five of Dimonds"
 }
 
 func (this deck) print() {
