@@ -20,10 +20,10 @@ func getNewDeck() deck {
 	return cards
 }
 
-func (this deck) print() {
+func (d deck) print() {
 	printHeader("Printing the Current Deck of Cards !")
 
-	for i, card := range this {
+	for i, card := range d {
 		fmt.Println(i, card)
 	}
 
@@ -34,10 +34,10 @@ func getNewCard() singleCard {
 	return "Five of Dimonds"
 }
 
-func (this singleCard) print() {
+func (sc singleCard) print() {
 	printHeader("Printing the Current Card !")
 
-	fmt.Println(this)
+	fmt.Println(sc)
 
 	printFooter()
 }
