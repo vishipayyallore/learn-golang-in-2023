@@ -20,18 +20,35 @@ func getNewDeck() deck {
 	return cards
 }
 
-func getNewCard() string {
-	return "Five of Dimonds"
-}
-
 func (this deck) print() {
+	printHeader("Printing the Current Deck of Cards !")
 
 	for i, card := range this {
 		fmt.Println(i, card)
 	}
 
+	printFooter()
+}
+
+func getNewCard() singleCard {
+	return "Five of Dimonds"
 }
 
 func (this singleCard) print() {
+	printHeader("Printing the Current Card !")
+
 	fmt.Println(this)
+
+	printFooter()
 }
+
+// func printHeader(headerTitle string) {
+// 	fmt.Println("=======================================================")
+// 	fmt.Println(headerTitle)
+// 	fmt.Println("=======================================================")
+// }
+
+// func printFooter() {
+// 	fmt.Println("-------------------------------------------------------")
+// 	fmt.Println()
+// }
