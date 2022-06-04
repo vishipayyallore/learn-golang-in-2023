@@ -20,8 +20,8 @@ func getNewDeck() deck {
 	return cards
 }
 
-func (d deck) print() {
-	printHeader("Displaying the Current Deck of Cards !")
+func (d deck) print(typeOfDeck string) {
+	printHeader(fmt.Sprintf("Displaying the %s of Cards !", typeOfDeck))
 
 	for i, card := range d {
 		fmt.Println(i, card)
