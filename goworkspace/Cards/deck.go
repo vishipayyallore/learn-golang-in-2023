@@ -1,8 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
-type singleCard string
 type deck []string
 
 func getNewDeck() deck {
@@ -32,4 +34,8 @@ func (d deck) print(typeOfDeck string) {
 
 func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
+}
+
+func (d deck) toString() string {
+	return strings.Join([]string(d), ",")
 }

@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 
 	var card = getNewCard()
@@ -12,4 +14,7 @@ func main() {
 	hand, remainingCards := deal(cards, 5)
 	hand.print("Hand Deck")
 	remainingCards.print("Remaining Deck")
+
+	// Converting the Deck to String
+	fmt.Println(cards.toString())
 }

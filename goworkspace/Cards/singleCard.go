@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+type singleCard string
+
 func getNewCard() singleCard {
 	return "Five of Dimonds"
 }
