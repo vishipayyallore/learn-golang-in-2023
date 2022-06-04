@@ -21,7 +21,7 @@ func getNewDeck() deck {
 }
 
 func (d deck) print() {
-	printHeader("Printing the Current Deck of Cards !")
+	printHeader("Displaying the Current Deck of Cards !")
 
 	for i, card := range d {
 		fmt.Println(i, card)
@@ -29,26 +29,3 @@ func (d deck) print() {
 
 	printFooter()
 }
-
-func getNewCard() singleCard {
-	return "Five of Dimonds"
-}
-
-func (sc singleCard) print() {
-	printHeader("Printing the Current Card !")
-
-	fmt.Println(sc)
-
-	printFooter()
-}
-
-// func printHeader(headerTitle string) {
-// 	fmt.Println("=======================================================")
-// 	fmt.Println(headerTitle)
-// 	fmt.Println("=======================================================")
-// }
-
-// func printFooter() {
-// 	fmt.Println("-------------------------------------------------------")
-// 	fmt.Println()
-// }
