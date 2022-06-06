@@ -24,6 +24,6 @@ func main() {
 	cards.saveToFile(filePath)
 
 	// Reading the Deck from a File
-	cards = newDeckFromFile(filePath)
+	cards = getNewDeckFromFile(filePath)
 	cards.print("Deck from File")
 }

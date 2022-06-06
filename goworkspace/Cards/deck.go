@@ -9,21 +9,6 @@ import (
 
 type deck []string
 
-func getNewDeck() deck {
-
-	cards := deck{}
-	cardSuits := []string{"Spades", "Diamonds", "Hearts", "Clubs"}
-	cardValues := []string{"Ace", "Two", "Three", "Four"}
-
-	for _, suit := range cardSuits {
-		for _, value := range cardValues {
-			cards = append(cards, value+" of "+suit)
-		}
-	}
-
-	return cards
-}
-
 func (d deck) print(typeOfDeck string) {
 	printHeader(fmt.Sprintf("Displaying the %s of Cards !", typeOfDeck))
 
@@ -47,7 +32,22 @@ func (d deck) saveToFile(filename string) error {
 	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
-func newDeckFromFile(filename string) deck {
+func getNewDeck() deck {
+
+	cards := deck{}
+	cardSuits := []string{"Spades", "Diamonds", "Hearts", "Clubs"}
+	cardValues := []string{"Ace", "Two", "Three", "Four"}
+
+	for _, suit := range cardSuits {
+		for _, value := range cardValues {
+			cards = append(cards, value+" of "+suit)
+		}
+	}
+
+	return cards
+}
+
+func getNewDeckFromFile(filename string) deck {
 	bs, err := ioutil.ReadFile(filename)
 
 	if err != nil {
