@@ -4,6 +4,8 @@ import "fmt"
 
 func main() {
 
+	filePath := "./Data/deskofcards.txt"
+
 	var card = getNewCard()
 	card.print()
 
@@ -19,5 +21,9 @@ func main() {
 	fmt.Println(cards.toString())
 
 	// Saving the Deck to a File
-	cards.saveToFile("./Data1/deskofcards.txt")
+	cards.saveToFile(filePath)
+
+	// Reading the Deck from a File
+	cards = newDeckFromFile(filePath)
+	cards.print("Deck from File")
 }

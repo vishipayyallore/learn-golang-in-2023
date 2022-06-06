@@ -55,6 +55,7 @@ func newDeckFromFile(filename string) deck {
 		os.Exit(1)
 	}
 
-	return getNewDeck()
-	// cards.print("New Deck")
+	deckFromFile := strings.Split(string(bs), ",")
+
+	return deck(deckFromFile)
 }
