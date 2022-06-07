@@ -26,4 +26,10 @@ func main() {
 	// Reading the Deck from a File
 	cards = getNewDeckFromFile(filePath)
 	cards.print("Deck from File")
+
+	fmt.Println("Before shuffling the deck")
+	fmt.Println(cards.toString())
+	cards.shuffle()
+	fmt.Println("After shuffling the deck")
+	fmt.Println(cards.toString())
 }
