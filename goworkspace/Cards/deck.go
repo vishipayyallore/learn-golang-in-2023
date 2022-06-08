@@ -62,8 +62,11 @@ func getNewDeckFromFile(filename string) deck {
 }
 
 func (d deck) shuffle() {
+
+	maxNumber := len(d) - 1
+
 	for i := range d {
-		newPosition := rand.Intn(len(d) - 1)
+		newPosition := rand.Intn(maxNumber)
 
 		d[i], d[newPosition] = d[newPosition], d[i]
 	}
