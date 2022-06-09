@@ -10,7 +10,7 @@ func TestNewDeck(t *testing.T) {
 	actual := len(cards)
 
 	if actual != expected {
-		t.Errorf("Expected deck length of 52, but got %v", actual)
+		t.Errorf("Expected deck length of %v, but got %v", expected, actual)
 	}
 
 	if cards[0] != "Ace of Spades" {
