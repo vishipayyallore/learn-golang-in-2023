@@ -1,7 +1,10 @@
 go 1.18
 
 use (
-	./Cards
-	./OddEven
-	./StructsDemo
+	./A1HelloWorld
+	./A2VariablesDemo
+	./A3Cards
+	./A4OddEven
+	./A5StructsDemo
+	./A6ArraysDemo
 )

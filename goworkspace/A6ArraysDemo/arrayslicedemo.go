@@ -6,7 +6,7 @@ func main() {
 	message := []string{"Hello", "World"}
 
 	updateMessage(message)
-	
+
 	fmt.Println(message)
 }
 
