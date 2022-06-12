@@ -56,8 +56,22 @@ func main() {
 			ZipCode: 12345,
 		},
 	}
+
 	// It will not update the FirstName field. As this is Pass By Value
 	jill.updateFirstName("Jilly")
+	jill.print()
+
+	// It will update the FirstName field. As this is Pass By Reference
+	jillPointer := &jill
+	jillPointer.updateFirstNameV1("Jilly")
+	jill.print()
+
+	// It will update the FirstName field. As this is Pass By Reference
+	(&jill).updateFirstNameV1("Jilly V1")
+	jill.print()
+
+	// It will update the FirstName field. As this is Pass By Reference
+	jill.updateFirstNameV1("Jilly V2")
 	jill.print()
 }
 
@@ -73,4 +87,8 @@ func (p Person1) print() {
 
 func (p Person1) updateFirstName(firstName string) {
 	p.FirstName = firstName
+}
+
+func (p *Person1) updateFirstNameV1(firstName string) {
+	(*p).FirstName = firstName
 }
