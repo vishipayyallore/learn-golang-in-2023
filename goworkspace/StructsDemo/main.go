@@ -3,27 +3,27 @@ package main
 import "fmt"
 
 type contactInfo struct {
-	Email string
+	Email   string
 	ZipCode int
 }
 
 type Person struct {
 	FirstName string
-	LastName string
+	LastName  string
 	// ContactInfo is a pointer to a contactInfo struct
 	Contact contactInfo
 }
 
 type Person1 struct {
 	FirstName string
-	LastName string
+	LastName  string
 	// ContactInfo is a pointer to a contactInfo struct
 	contactInfo
 }
 
 func main() {
 	// Create a new Person struct (Method 1)
-	alex := Person{"Alex", "Anderson", contactInfo{}}	
+	alex := Person{"Alex", "Anderson", contactInfo{}}
 	alex.print()
 
 	// Create a new Person struct (Method 2)
@@ -39,20 +39,20 @@ func main() {
 	alex2.print()
 
 	jim := Person{
-		FirstName: "Jim", 
-		LastName: "Anderson",
+		FirstName: "Jim",
+		LastName:  "Anderson",
 		Contact: contactInfo{
-			Email: "a.b@c.com",
+			Email:   "a.b@c.com",
 			ZipCode: 12345,
 		},
 	}
 	jim.print()
 
 	jill := Person1{
-		FirstName: "Jill", 
-		LastName: "Jackson",
+		FirstName: "Jill",
+		LastName:  "Jackson",
 		contactInfo: contactInfo{
-			Email: "Jill.Jackson@Sample.com",
+			Email:   "Jill.Jackson@Sample.com",
 			ZipCode: 12345,
 		},
 	}
