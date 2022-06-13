@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import(
+	Employee "A6ArraysDemo/Employees"
+	"fmt"
+)
 
 func main() {
 	message := []string{"Hello", "World"}
@@ -8,6 +11,9 @@ func main() {
 	updateMessage(message)
 
 	fmt.Println(message)
+
+	alex := Employee.Person{"Alex", "Anderson"}
+	fmt.Println(alex)
 }
 
 func updateMessage(message []string) {
