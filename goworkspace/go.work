@@ -7,4 +7,6 @@ use (
 	./A4OddEven
 	./A5StructsDemo
 	./A6ArraysDemo
+	./A7MapsDemo
+	./A8InterfacesDemo
 )
