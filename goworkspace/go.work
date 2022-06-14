@@ -9,4 +9,5 @@ use (
 	./A6ArraysDemo
 	./A7MapsDemo
 	./A8InterfacesDemo
+	./A9HttpRequestDemo
 )
