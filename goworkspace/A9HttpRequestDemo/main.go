@@ -22,5 +22,9 @@ func main() {
 	fmt.Println("Output Received: ", resp)
 	fmt.Println("Output Received: ", resp.Body)
 
+	bs := make([]byte, 99999)
+	resp.Body.Read(bs)
+	fmt.Println("Output Received: ", string(bs))
+
 	defer resp.Body.Close()
 }
