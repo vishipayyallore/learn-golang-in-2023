@@ -2,6 +2,7 @@ go 1.18
 
 use (
 	./A10ShapesDemo
+	./A11PrintFile
 	./A1HelloWorld
 	./A2VariablesDemo
 	./A3Cards
