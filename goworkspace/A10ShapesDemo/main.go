@@ -33,9 +33,9 @@ func printArea(s shape) {
 
 func main() {
 
-	t := triangle{base: 3, height: 4}
+	t := triangle{base: 10, height: 10}
 	printArea(t)
 
-	s := square{sideLength: 5}
+	s := square{sideLength: 10}
 	printArea(s)
 }
