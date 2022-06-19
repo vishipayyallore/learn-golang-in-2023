@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -22,10 +23,17 @@ func main() {
 	}
 
 	// // All messages will be received in one print statement
-	for {
-		go checkLink(<-c, c)
-	}
+	// Version 1
+	// for {
+	// 	go checkLink(<-c, c)
+	// }
 
+	// Version 2
+	for l := range c {
+		time.Sleep(time.Second * 5)
+
+		go checkLink(l, c)
+	}
 }
 
 func checkLink(link string, c chan string) {
