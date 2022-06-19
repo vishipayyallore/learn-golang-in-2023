@@ -29,11 +29,21 @@ func main() {
 	// }
 
 	// Version 2
-	for l := range c {
-		time.Sleep(time.Second * 5)
+	// for l := range c {
+	// 	time.Sleep(time.Second * 5)
 
-		go checkLink(l, c)
+	// 	go checkLink(l, c)
+	// }
+
+	// Version 3
+	for l := range c {
+		go func(link string) {
+			time.Sleep(time.Second * 5)
+
+			checkLink(link, c)
+		}(l)
 	}
+
 }
 
 func checkLink(link string, c chan string) {
