@@ -13,4 +13,5 @@ use (
 	./A7MapsDemo
 	./A8InterfacesDemo
 	./A9HttpRequestDemo
+	./B1MathDemo1
 )
