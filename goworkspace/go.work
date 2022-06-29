@@ -14,5 +14,6 @@ use (
 	./A8InterfacesDemo
 	./A9HttpRequestDemo
 	./B1MathDemo1
+	./B2HelloWorld
 	./MG1_DistanceDemo
 )
