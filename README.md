@@ -1,6 +1,6 @@
-# learn-golang-in-2022
+# learn-golang-in-2023
 
-I am learning Go Lang in 2020 using multiple Books, Video Courses, and Web Sites
+I am learning Go Lang in 2023 using multiple Books, Video Courses, and Web Sites
 
 ```golang
 go mod init Cards
