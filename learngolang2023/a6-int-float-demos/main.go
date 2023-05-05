@@ -13,13 +13,11 @@ func main() {
 	var m float32 = 43.742
 	fmt.Printf("%v of type %T \n", m, m)
 
-	/*
-		// in go you can't take a VALUE that is float32 and store it in a variable that is declared to hold a VALUE of float64
-		z = m
-		fmt.Printf("%v of type %T \n", z, z)
-	*/
+	// // in go you can't take a VALUE that is float32 and store it in a variable that is declared to hold a VALUE of float64
+	// z = m
+	// fmt.Printf("%v of type %T \n", z, z)
 
-	// this does work
+	// We have to convert float32 to float64 - this is called casting
 	z = float64(m)
 	fmt.Printf("%v of type %T \n", z, z)
 }
