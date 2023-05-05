@@ -1,5 +1,9 @@
 # Learn GoLang in 2023
 
+**Reference(s):**
+
+> 1. [https://gobyexample.com](https://gobyexample.com)
+
 ## Table of Contents
 
 Few basic commands to get started with GoLang
@@ -18,3 +22,6 @@ go mod tidy
 ## Few basic points to remember
 
 > 1. Short hand declaration can be used to declare and initialize a variable. It is allowed only inside a function.
+> 1. A numeric constant has no type until it’s given one, such as by an explicit conversion.
+> 1. A number can be given a type by using it in a context that requires one, such as a variable assignment or function call. For example, here math.Sin expects a float64.
+> 1. Value that is float32 and cannot be stored in a variable that is declared to hold a float64
