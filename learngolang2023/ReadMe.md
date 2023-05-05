@@ -23,3 +23,4 @@ go mod tidy
 
 > 1. Short hand declaration can be used to declare and initialize a variable. It is allowed only inside a function.
 > 1. A numeric constant has no type until it’s given one, such as by an explicit conversion.
+> 1. A number can be given a type by using it in a context that requires one, such as a variable assignment or function call. For example, here math.Sin expects a float64.
