@@ -27,3 +27,4 @@ go mod tidy
 > 1. Value that is float32 and cannot be stored in a variable that is declared to hold a float64
 > 1. A statement can precede conditionals; any variables declared in this statement are available in the current and all subsequent branches.
 > 1. Go has only one looping construct, the for loop.
+> 1. "factored" import statement with multiple imports within parenthesis
