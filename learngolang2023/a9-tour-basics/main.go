@@ -6,13 +6,16 @@ package main
 // "factored" import statement.
 import (
 	"fmt"
+	"math"
 	"math/rand"
 )
 
 func main() {
 	generateRandomNumbers(20)
 
-	fmt.Println(add(42, 13))
+	fmt.Println("\nMath.Pi: ", math.Pi)
+
+	fmt.Println("Add: ", add(42, 13))
 	fmt.Println("Multiply: ", multiply(2, 3))
 }
 
