@@ -32,4 +32,5 @@ func split(sum int) (x, y int) {
 	y = sum - x
 
 	return x, y
+	// A "return" statement without arguments returns the named return values. This is known as a "naked" return.
 }
