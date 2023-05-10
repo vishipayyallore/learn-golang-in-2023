@@ -11,8 +11,8 @@ func main() {
 	a, b := swap("Go World !!", "Hello")
 	fmt.Println(a, b)
 
-	c, d := split(17)
-	fmt.Println(c, d)
+	x, y := split(17)
+	fmt.Println("Named Returns: ", x, y)
 }
 
 func add(x int, y int) int {
@@ -31,6 +31,6 @@ func split(sum int) (x, y int) {
 	x = sum * 4 / 9
 	y = sum - x
 
-	return x, y
-	// A "return" statement without arguments returns the named return values. This is known as a "naked" return.
+	return // A "return" statement without arguments returns the named return values. This is known as a "naked" return.
+	// return x, y
 }
