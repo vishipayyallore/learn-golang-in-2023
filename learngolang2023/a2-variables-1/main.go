@@ -2,55 +2,38 @@ package main
 
 import "fmt"
 
+var c, python, java bool
+var n1, n2 int = 1, 2
+
 func main() {
 
-	fmt.Print("***** Printing Values *****")
-	fmt.Println("go" + "lang")
+	fmt.Println("***** Printing Variables with default Values *****")
+	printVariablesWithDefaults()
 
-	fmt.Println("1+1 =", 1+1)
-	fmt.Println("7.0/3.0 =", 7.0/3.0)
+	fmt.Println("\n***** Printing Variables Initializers default Values *****")
+	variablesWithInitializers()
 
-	fmt.Println(true && false)
-	fmt.Println(true || false)
-	fmt.Println(!true)
-	fmt.Print("***** Printing Values ***** \n\n")
+}
 
-	a := 42
-	fmt.Println(a)
+func printVariablesWithDefaults() {
+	var i int
+	var name string
 
-	b, c, d, _, f := 0, 1, 2, 3, "happiness"
-	fmt.Println(b, c, d, f)
+	fmt.Printf("a: %v || type:%T \n", c, c)
+	fmt.Printf("python: %v || type:%T \n", python, python)
+	fmt.Printf("java: %v || type:%T \n", java, java)
+	fmt.Printf("i: %v || type:%T \n", i, i)
+	fmt.Printf("name: %v || type:%T \n", name, name)
+}
 
-	// this would not work
-	/*
-		b, c, d, e := 0, 1, 2, 3
-		fmt.Println(b, c, d)
-	*/
+func variablesWithInitializers() {
+	var c1, python1, java1 = "no!", true, false
+	k := 3.6
 
-	// this does work
-	var g int
-	fmt.Println(g)
-	g = 43
-	fmt.Println(g)
-
-	// declare a variable to hold a VALUE of a certain TYPE
-	// initializing a variable
-	var h int = 44
-	fmt.Println(h)
-
-	var aa = "initial"
-	fmt.Println(aa)
-
-	var bb, cc int = 1, 2
-	fmt.Println(bb, cc)
-
-	var dd = true
-	fmt.Println(dd)
-
-	var e int
-	fmt.Println(e)
-
-	ff := "apple"
-	fmt.Println(ff)
-
+	fmt.Printf("n1: %v || type:%T \n", n1, n1)
+	fmt.Printf("n2: %v || type:%T \n", n2, n2)
+	fmt.Printf("c1: %v || type:%T \n", c1, c1)
+	fmt.Printf("python1: %v || type:%T \n", python1, python1)
+	fmt.Printf("java1: %v || type:%T \n", java1, java1)
+	fmt.Printf("k: %v || type:%T \n", k, k)
 }
