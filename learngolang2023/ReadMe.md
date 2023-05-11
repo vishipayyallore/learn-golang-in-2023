@@ -28,3 +28,5 @@ go mod tidy
 > 1. A statement can precede conditionals; any variables declared in this statement are available in the current and all subsequent branches.
 > 1. Go has only one looping construct, the for loop.
 > 1. "factored" import statement with multiple imports within parenthesis
+> 1. A function can return any number of results.
+> 1. A return statement without arguments returns the named return values. This is known as a "naked" return.
