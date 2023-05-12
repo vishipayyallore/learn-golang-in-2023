@@ -10,7 +10,7 @@ func main() {
 	fmt.Println("***** Printing Variables with default Values *****")
 	printVariablesWithDefaults()
 
-	fmt.Println("\n***** Printing Variables Initializers default Values *****")
+	fmt.Println("\n***** Printing Variables Initializers Values *****")
 	variablesWithInitializers()
 
 }
