@@ -2,35 +2,54 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
-	fmt.Println("Add: ", add(42, 13))
-	fmt.Println("Multiply: ", multiply(2, 3))
+	showBasicSwitchDemo()
 
-	a, b := swap("Go World !!", "Hello")
-	fmt.Println(a, b)
+	showCommasSeparateMultipleExpressionsDemo()
 
-	x, y := split(17)
-	fmt.Println("Named Returns: ", x, y)
+	showSwitchWithoutExpressionDemo()
 }
 
-func add(x int, y int) int {
-	return x + y
+// basic switch
+func showBasicSwitchDemo() {
+	fmt.Println("***** basic switch *****")
+	i := 2
+	fmt.Print("Write ", i, " as ")
+	switch i {
+	case 1:
+		fmt.Println("one")
+	case 2:
+		fmt.Println("two")
+	case 3:
+		fmt.Println("three")
+	}
 }
 
-func multiply(x, y int) int {
-	return x + y
+// Commas to separate multiple expressions in the same case statement and optional default case as well.
+func showCommasSeparateMultipleExpressionsDemo() {
+	fmt.Println("\n***** Commas to separate multiple expressions in the same case statement *****")
+
+	switch time.Now().Weekday() {
+	case time.Saturday, time.Sunday:
+		fmt.Println("It's the weekend")
+	default:
+		fmt.Println("It's a weekday")
+	}
 }
 
-func swap(x, y string) (string, string) {
-	return y, x
-}
+// switch without an expression is an alternate way to express if/else logic.
+// Here we also show how the case expressions can be non-constants.
+func showSwitchWithoutExpressionDemo() {
+	fmt.Println("\n***** switch without an expression *****")
 
-func split(sum int) (x, y int) {
-	x = sum * 4 / 9
-	y = sum - x
-
-	return // A "return" statement without arguments returns the named return values. This is known as a "naked" return.
-	// return x, y
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("It's before noon ", t.Hour())
+	default:
+		fmt.Println("It's after noon", t.Hour())
+	}
 }
