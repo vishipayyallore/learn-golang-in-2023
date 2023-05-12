@@ -68,7 +68,7 @@ func showTypeSwitchDemo() {
 		case int:
 			fmt.Println("I'm an int")
 		default:
-			fmt.Printf("Don't know type %T\n", t)
+			fmt.Printf("The type is %T\n", t)
 		}
 	}
 
