@@ -13,6 +13,8 @@ func main() {
 	fmt.Println("\n***** Printing Variables Initializers Values *****")
 	variablesWithInitializers()
 
+	fmt.Println("\n***** Printing Variables With Short Assignment *****")
+	variablesWithShortAssignment()
 }
 
 func printVariablesWithDefaults() {
@@ -36,4 +38,12 @@ func variablesWithInitializers() {
 	fmt.Printf("python1: %v || type:%T \n", python1, python1)
 	fmt.Printf("java1: %v || type:%T \n", java1, java1)
 	fmt.Printf("k: %v || type:%T \n", k, k)
+}
+
+func variablesWithShortAssignment() {
+	var i, j int = 1, 2
+	k := 3
+	c, python, java := true, false, "no!"
+
+	fmt.Println(i, j, k, c, python, java)
 }
