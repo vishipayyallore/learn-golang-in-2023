@@ -30,3 +30,5 @@ go mod tidy
 > 1. "factored" import statement with multiple imports within parenthesis
 > 1. A function can return any number of results.
 > 1. A return statement without arguments returns the named return values. This is known as a "naked" return.
+> 1. An uninitialized slice equals to nil and has length 0.
+> 1. The range form of the for loop iterates over a slice or map.
