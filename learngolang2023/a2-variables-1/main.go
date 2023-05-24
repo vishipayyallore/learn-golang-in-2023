@@ -45,5 +45,12 @@ func variablesWithShortAssignment() {
 	k := 3
 	c, python, java := true, false, "no!"
 
-	fmt.Println(i, j, k, c, python, java)
+	fmt.Printf("i: %v || type:%T \n", i, i)
+	fmt.Printf("j: %v || type:%T \n", j, j)
+	fmt.Printf("k: %v || type:%T \n", k, k)
+
+	fmt.Printf("c: %v || type:%T \n", c, c)
+	fmt.Printf("python: %v || type:%T \n", python, python)
+
+	fmt.Printf("java: %v || type:%T \n", java, java)
 }
