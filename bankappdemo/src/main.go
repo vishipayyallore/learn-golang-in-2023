@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"log"
 	"net/http"
@@ -23,6 +24,7 @@ func main() {
 
 	// Defining the routes for Customers
 	http.HandleFunc("/api/customers", getAllCustomersHandler)
+	http.HandleFunc("/api/customersxml", getAllCustomersInXmlHandler)
 
 	// Starting the server
 	fmt.Println("Starting the Server on ", hostServer)
@@ -38,13 +40,27 @@ func apiRootHandler(w http.ResponseWriter, r *http.Request) {
 func getAllCustomersHandler(w http.ResponseWriter, r *http.Request) {
 
 	customers := []Customer{
-		{Name: "John", City: "New York", ZipCode: "12345"},
-		{Name: "Jane", City: "New York", ZipCode: "12345"},
-		{Name: "Jack", City: "New York", ZipCode: "12345"},
-		{Name: "Jill", City: "New York", ZipCode: "12345"},
+		{Name: "John", City: "New York", Zipcode: "12345"},
+		{Name: "Jane", City: "New York", Zipcode: "12345"},
+		{Name: "Jack", City: "New York", Zipcode: "12345"},
+		{Name: "Jill", City: "New York", Zipcode: "12345"},
 	}
 
 	w.Header().Set("Content-Type", "application/json")
 
 	json.NewEncoder(w).Encode(customers)
+}
+
+func getAllCustomersInXmlHandler(w http.ResponseWriter, r *http.Request) {
+
+	customers := []Customer{
+		{Name: "John", City: "New York", Zipcode: "12345"},
+		{Name: "Jane", City: "New York", Zipcode: "12345"},
+		{Name: "Jack", City: "New York", Zipcode: "12345"},
+		{Name: "Jill", City: "New York", Zipcode: "12345"},
+	}
+
+	w.Header().Set("Content-Type", "application/xml")
+
+	xml.NewEncoder(w).Encode(customers)
 }
