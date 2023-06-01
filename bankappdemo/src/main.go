@@ -24,6 +24,7 @@ func main() {
 
 	// Defining the routes for Customers
 	http.HandleFunc("/api/customers", getAllCustomersHandler)
+	http.HandleFunc("/api/customersjson", getAllCustomersInJsonHandler)
 	http.HandleFunc("/api/customersxml", getAllCustomersInXmlHandler)
 
 	// Starting the server
@@ -38,6 +39,20 @@ func apiRootHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func getAllCustomersHandler(w http.ResponseWriter, r *http.Request) {
+
+	customers := []Customer{
+		{Name: "John", City: "New York", Zipcode: "12345"},
+		{Name: "Jane", City: "New York", Zipcode: "12345"},
+		{Name: "Jack", City: "New York", Zipcode: "12345"},
+		{Name: "Jill", City: "New York", Zipcode: "12345"},
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+
+	json.NewEncoder(w).Encode(customers)
+}
+
+func getAllCustomersInJsonHandler(w http.ResponseWriter, r *http.Request) {
 
 	customers := []Customer{
 		{Name: "John", City: "New York", Zipcode: "12345"},
