@@ -12,7 +12,7 @@ type Customer struct {
 	Zipcode string `json:"zip_code" xml:"zip_code"`
 }
 
-func getAllCustomersHandler(w http.ResponseWriter, r *http.Request) {
+func GetAllCustomersHandler(w http.ResponseWriter, r *http.Request) {
 
 	customers := []Customer{
 		{Name: "John", City: "New York", Zipcode: "12345"},
@@ -30,7 +30,7 @@ func getAllCustomersHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func getAllCustomersInJsonHandler(w http.ResponseWriter, r *http.Request) {
+func GetAllCustomersInJsonHandler(w http.ResponseWriter, r *http.Request) {
 
 	customers := []Customer{
 		{Name: "John", City: "New York", Zipcode: "12345"},
@@ -44,7 +44,7 @@ func getAllCustomersInJsonHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(customers)
 }
 
-func getAllCustomersInXmlHandler(w http.ResponseWriter, r *http.Request) {
+func GetAllCustomersInXmlHandler(w http.ResponseWriter, r *http.Request) {
 
 	customers := []Customer{
 		{Name: "John", City: "New York", Zipcode: "12345"},
