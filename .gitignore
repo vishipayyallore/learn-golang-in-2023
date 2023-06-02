@@ -352,3 +352,4 @@ MigrationBackup/
 .idea
 pkg
 goworkspace/A3Cards/A3Cards.exe
+bankappdemo/src/__debug_bin.exe
