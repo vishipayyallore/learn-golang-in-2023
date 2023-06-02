@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bankappdemo/src/app"
+	"bankappdemo/app"
 	"fmt"
 )
 

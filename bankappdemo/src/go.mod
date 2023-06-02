@@ -1,3 +1,3 @@
-module bankappdemo/src
+module bankappdemo
 
 go 1.20
