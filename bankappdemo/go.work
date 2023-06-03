@@ -4,4 +4,5 @@ use (
 	./src
 	./src/app
 	./src/domain
+	./src/services
 )
