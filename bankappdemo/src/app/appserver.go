@@ -4,12 +4,15 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func StartBankServer() {
 	hostServer := "localhost:8080"
 
-	serverMux := http.NewServeMux()
+	// serverMux := http.NewServeMux()
+	serverMux := mux.NewRouter()
 
 	// Defining the routes
 	serverMux.HandleFunc("/", ApiRootHandler)
