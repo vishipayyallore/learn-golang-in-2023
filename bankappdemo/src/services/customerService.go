@@ -5,15 +5,15 @@ import (
 )
 
 type CustomerService interface {
-	GetAllCustomers(string) ([]domain.Customer, error)
+	GetAllCustomers() ([]domain.Customer, error)
 }
 
 type DefaultCustomerService struct {
 	repository domain.CustomerRepository
 }
 
-func (service DefaultCustomerService) GetAllCustomers(status string) ([]domain.Customer, error) {
-	return service.repository.FindAll(status)
+func (service DefaultCustomerService) GetAllCustomers() ([]domain.Customer, error) {
+	return service.repository.FindAll()
 }
 
 func NewCustomerService(customerRepository domain.CustomerRepository) DefaultCustomerService {
