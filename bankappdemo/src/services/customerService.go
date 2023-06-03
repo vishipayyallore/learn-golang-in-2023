@@ -9,13 +9,13 @@ type CustomerService interface {
 }
 
 type DefaultCustomerService struct {
-	repo domain.CustomerRepository
+	repository domain.CustomerRepository
 }
 
 func (service DefaultCustomerService) GetAllCustomers(status string) ([]domain.Customer, error) {
-	return service.repo.FindAll(status)
+	return service.repository.FindAll(status)
 }
 
-func NewCustomerService(repo domain.CustomerRepository) DefaultCustomerService {
-	return DefaultCustomerService{repo: repo}
+func NewCustomerService(customerRepository domain.CustomerRepository) DefaultCustomerService {
+	return DefaultCustomerService{repository: customerRepository}
 }
