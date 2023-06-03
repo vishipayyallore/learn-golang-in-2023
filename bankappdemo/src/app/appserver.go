@@ -27,7 +27,8 @@ func StartBankServer() {
 	muxRouter.HandleFunc("/api/democustomersxml", GetAllDemoCustomersInXmlHandler).Methods(http.MethodGet)
 
 	// Wiring up the Customer Handlers
-	customerHandlers := &CustomersHandlers{customerService: services.NewCustomerService(domain.NewCustomerRepositoryStub())}
+	// customerHandlers := &CustomersHandlers{customerService: services.NewCustomerService(domain.NewCustomerRepositoryStub())}
+	customerHandlers := &CustomersHandlers{customerService: services.NewCustomerService(domain.NewCustomerRepositoryDb())}
 
 	// Defining the routes for Customers
 	muxRouter.HandleFunc("/api/customers", customerHandlers.GetAllCustomersHandler).Methods(http.MethodGet)
