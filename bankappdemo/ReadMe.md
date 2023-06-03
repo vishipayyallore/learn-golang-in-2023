@@ -16,3 +16,6 @@ PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo\src\services> cd ../..
 PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo> go work use .\src\services\
 PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo> 
 ```
+
+> 1. https://github.com/gorilla/mux
+> 1. https://github.com/go-sql-driver/mysql
