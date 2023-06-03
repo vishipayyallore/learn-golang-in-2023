@@ -18,6 +18,11 @@ func StartBankServer() {
 	muxRouter.HandleFunc("/", ApiRootHandler)
 	muxRouter.HandleFunc("/api", ApiRootHandler)
 
+	// Defining the routes for Demo Customers
+	muxRouter.HandleFunc("/api/customers", GetAllDemoCustomersHandler)
+	muxRouter.HandleFunc("/api/customersjson", GetAllDemoCustomersInJsonHandler)
+	muxRouter.HandleFunc("/api/customersxml", GetAllDemoCustomersInXmlHandler)
+
 	// Defining the routes for Customers
 	muxRouter.HandleFunc("/api/customers", GetAllCustomersHandler)
 	muxRouter.HandleFunc("/api/customersjson", GetAllCustomersInJsonHandler)
