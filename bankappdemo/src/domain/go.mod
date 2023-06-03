@@ -1,3 +1,3 @@
-module bankappdemo/domainbankappdemo/app
+module bankappdemo/domain
 
 go 1.20

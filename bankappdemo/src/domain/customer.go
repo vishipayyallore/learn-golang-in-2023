@@ -8,3 +8,7 @@ type Customer struct {
 	DateofBirth string `db:"date_of_birth"`
 	Status      string
 }
+
+type CustomerRepository interface {
+	FindAll(status string) ([]Customer, error)
+}
