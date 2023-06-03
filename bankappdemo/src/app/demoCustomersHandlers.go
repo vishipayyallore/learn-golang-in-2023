@@ -14,7 +14,7 @@ type CustomerV1 struct {
 
 func GetAllDemoCustomersHandler(w http.ResponseWriter, r *http.Request) {
 
-	customers := GetDummyCustomers()
+	customers := GetDemoCustomers()
 
 	if r.Header.Get("Content-Type") == "application/xml" {
 		w.Header().Set("Content-Type", "application/xml")
@@ -27,7 +27,7 @@ func GetAllDemoCustomersHandler(w http.ResponseWriter, r *http.Request) {
 
 func GetAllDemoCustomersInJsonHandler(w http.ResponseWriter, r *http.Request) {
 
-	customers := GetDummyCustomers()
+	customers := GetDemoCustomers()
 
 	w.Header().Set("Content-Type", "application/json")
 
@@ -36,14 +36,14 @@ func GetAllDemoCustomersInJsonHandler(w http.ResponseWriter, r *http.Request) {
 
 func GetAllDemoCustomersInXmlHandler(w http.ResponseWriter, r *http.Request) {
 
-	customers := GetDummyCustomers()
+	customers := GetDemoCustomers()
 
 	w.Header().Set("Content-Type", "application/xml")
 
 	xml.NewEncoder(w).Encode(customers)
 }
 
-func GetDummyCustomers() []CustomerV1 {
+func GetDemoCustomers() []CustomerV1 {
 	return []CustomerV1{
 		{Name: "John", City: "New York", Zipcode: "12345"},
 		{Name: "Jane", City: "New York", Zipcode: "12345"},
