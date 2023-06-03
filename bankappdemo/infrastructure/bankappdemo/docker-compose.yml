@@ -9,7 +9,7 @@ services:
       - ./initdb:/docker-entrypoint-initdb.d
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: Sample@123$
+      MYSQL_ROOT_PASSWORD: Sample123$
       TZ: Asia/Kolkata
 
 volumes:

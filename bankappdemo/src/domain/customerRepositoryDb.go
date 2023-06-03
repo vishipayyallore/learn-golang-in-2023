@@ -1,6 +1,7 @@
 package domain
 
 import (
+	"database/sql"
 	"log"
 	"time"
 
@@ -8,12 +9,12 @@ import (
 )
 
 type CustomerRepositoryDb struct {
-	client *sqlx.DB
+	mySqlClient *sql.DB
 }
 
-func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, error) {
+func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 	findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers"
-	rows, err = mySqlClient.Query(findAllSql)
+	rows, err := d.mySqlClient.Query(findAllSql)
 
 	if err != nil {
 		log.Fatal(err)
@@ -25,7 +26,7 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, error) {
 	for rows.Next() {
 		var customer Customer
 
-		err := rows.Scan(&customer.Id, &customer.Name, &customer.City, &customer.Zipcode, &customer.DateOfBirth, &customer.Status)
+		err := rows.Scan(&customer.Id, &customer.Name, &customer.City, &customer.Zipcode, &customer.DateofBirth, &customer.Status)
 
 		if err != nil {
 			log.Fatal(err)
@@ -39,7 +40,7 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, error) {
 }
 
 func NewCustomerRepositoryDb() CustomerRepositoryDb {
-	client, err := sqlx.Open("mysql", "user:password@/dbname")
+	client, err := sql.Open("mysql", "root:Sample123$@tcp(localhost:3306)/banking")
 	if err != nil {
 		panic(err)
 	}
@@ -50,6 +51,6 @@ func NewCustomerRepositoryDb() CustomerRepositoryDb {
 	client.SetMaxIdleConns(10)
 
 	return CustomerRepositoryDb{
-		client: client,
+		mySqlClient: client,
 	}
 }
