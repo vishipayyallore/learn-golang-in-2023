@@ -17,7 +17,7 @@ func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 	rows, err := d.mySqlClient.Query(findAllSql)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println("Error while Querying Customer Table. ", err.Error())
 
 		return nil, err
 	}
@@ -29,11 +29,12 @@ func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 		err := rows.Scan(&customer.Id, &customer.Name, &customer.City, &customer.Zipcode, &customer.DateofBirth, &customer.Status)
 
 		if err != nil {
-			log.Fatal(err)
+			log.Println("Error while Scanning Customer Table. ", err.Error())
+
+			return nil, err
 		}
 
 		customers = append(customers, customer)
-
 	}
 
 	return customers, nil
