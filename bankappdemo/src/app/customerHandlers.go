@@ -42,9 +42,11 @@ func (ch *CustomersHandlers) GetCustomer(w http.ResponseWriter, r *http.Request)
 
 	if r.Header.Get("Content-Type") == "application/xml" {
 		w.Header().Set("Content-Type", "application/xml")
+		w.WriteHeader(http.StatusOK)
 		xml.NewEncoder(w).Encode(customer)
 	} else {
 		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(customer)
 	}
 }
