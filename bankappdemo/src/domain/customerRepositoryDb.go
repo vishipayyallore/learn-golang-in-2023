@@ -2,6 +2,7 @@ package domain
 
 import (
 	"database/sql"
+	"errors"
 	"log"
 	"time"
 
@@ -49,9 +50,13 @@ func (d CustomerRepositoryDb) FindById(id string) (*Customer, error) {
 	err := row.Scan(&customer.Id, &customer.Name, &customer.City, &customer.Zipcode, &customer.DateofBirth, &customer.Status)
 
 	if err != nil {
-		log.Println("Error while Scanning Customer Table. ", err.Error())
 
-		return nil, err
+		if err == sql.ErrNoRows {
+			return nil, errors.New("Customer not found")
+		} else {
+			log.Println("Error while Scanning Customer Table. ", err.Error())
+			return nil, errors.New("Unexpected database error")
+		}
 	}
 
 	return &customer, nil
