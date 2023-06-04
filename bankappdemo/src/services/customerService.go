@@ -5,17 +5,17 @@ import (
 )
 
 type CustomerService interface {
-	GetAllCustomers(string) ([]domain.Customer, error)
+	GetAllCustomers() ([]domain.Customer, error)
 }
 
 type DefaultCustomerService struct {
-	repo domain.CustomerRepository
+	repository domain.CustomerRepository
 }
 
-func (service DefaultCustomerService) GetAllCustomers(status string) ([]domain.Customer, error) {
-	return service.repo.FindAll(status)
+func (service DefaultCustomerService) GetAllCustomers() ([]domain.Customer, error) {
+	return service.repository.FindAll()
 }
 
-func NewCustomerService(repo domain.CustomerRepository) DefaultCustomerService {
-	return DefaultCustomerService{repo: repo}
+func NewCustomerService(customerRepository domain.CustomerRepository) DefaultCustomerService {
+	return DefaultCustomerService{repository: customerRepository}
 }

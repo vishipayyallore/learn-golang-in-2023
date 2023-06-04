@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"net/http"
+
+	"bankappdemo/services"
 )
 
 type Customer struct {
@@ -12,9 +14,13 @@ type Customer struct {
 	Zipcode string `json:"zip_code" xml:"zip_code"`
 }
 
-func GetAllCustomersHandler(w http.ResponseWriter, r *http.Request) {
+type CustomersHandlers struct {
+	customerService services.CustomerService
+}
 
-	customers := GetDummyCustomers()
+func (ch *CustomersHandlers) GetAllCustomersHandler(w http.ResponseWriter, r *http.Request) {
+
+	customers, _ := ch.customerService.GetAllCustomers()
 
 	if r.Header.Get("Content-Type") == "application/xml" {
 		w.Header().Set("Content-Type", "application/xml")

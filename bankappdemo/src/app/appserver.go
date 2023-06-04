@@ -5,6 +5,9 @@ import (
 	"log"
 	"net/http"
 
+	"bankappdemo/domain"
+	"bankappdemo/services"
+
 	"github.com/gorilla/mux"
 )
 
@@ -23,24 +26,15 @@ func StartBankServer() {
 	muxRouter.HandleFunc("/api/democustomersjson", GetAllDemoCustomersInJsonHandler).Methods(http.MethodGet)
 	muxRouter.HandleFunc("/api/democustomersxml", GetAllDemoCustomersInXmlHandler).Methods(http.MethodGet)
 
+	// Wiring up the Customer Handlers
+	// customerHandlers := &CustomersHandlers{customerService: services.NewCustomerService(domain.NewCustomerRepositoryStub())}
+	customerHandlers := &CustomersHandlers{customerService: services.NewCustomerService(domain.NewCustomerRepositoryDb())}
+
 	// Defining the routes for Customers
-	muxRouter.HandleFunc("/api/customersjson", GetAllCustomersInJsonHandler).Methods(http.MethodGet)
-	muxRouter.HandleFunc("/api/customersxml", GetAllCustomersInXmlHandler).Methods(http.MethodGet)
-	muxRouter.HandleFunc("/api/customers", GetAllCustomersHandler).Methods(http.MethodGet)
-	muxRouter.HandleFunc("/api/customers/{customer_id:[0-9]+}", GetCustomerByIdHandler).Methods(http.MethodGet)
-	muxRouter.HandleFunc("/api/customers", CreateCustomerHandler).Methods(http.MethodPost)
+	muxRouter.HandleFunc("/api/customers", customerHandlers.GetAllCustomersHandler).Methods(http.MethodGet)
 
 	// Starting the server
 	fmt.Println("Starting the Server on ", hostServer)
 	log.Fatal(http.ListenAndServe(hostServer, muxRouter))
 
-}
-
-func GetCustomerByIdHandler(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	fmt.Fprintf(w, "Customer ID: %v\n", vars["customer_id"])
-}
-
-func CreateCustomerHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Create Customer Handler\n")
 }
