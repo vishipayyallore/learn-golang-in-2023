@@ -6,13 +6,9 @@ import (
 	"net/http"
 
 	"bankappdemo/services"
-)
 
-type Customer struct {
-	Name    string `json:"full_name" xml:"full_name"`
-	City    string `json:"city" xml:"city"`
-	Zipcode string `json:"zip_code" xml:"zip_code"`
-}
+	"github.com/gorilla/mux"
+)
 
 type CustomersHandlers struct {
 	customerService services.CustomerService
@@ -31,29 +27,23 @@ func (ch *CustomersHandlers) GetAllCustomersHandler(w http.ResponseWriter, r *ht
 	}
 }
 
-func GetAllCustomersInJsonHandler(w http.ResponseWriter, r *http.Request) {
+func (ch *CustomersHandlers) GetCustomer(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	customerId := vars["customer_id"]
 
-	customers := GetDummyCustomers()
+	customer, err := ch.customerService.GetCustomer(customerId)
 
-	w.Header().Set("Content-Type", "application/json")
+	if err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte(err.Error()))
+		return
+	}
 
-	json.NewEncoder(w).Encode(customers)
-}
-
-func GetAllCustomersInXmlHandler(w http.ResponseWriter, r *http.Request) {
-
-	customers := GetDummyCustomers()
-
-	w.Header().Set("Content-Type", "application/xml")
-
-	xml.NewEncoder(w).Encode(customers)
-}
-
-func GetDummyCustomers() []Customer {
-	return []Customer{
-		{Name: "John", City: "New York", Zipcode: "12345"},
-		{Name: "Jane", City: "New York", Zipcode: "12345"},
-		{Name: "Jack", City: "New York", Zipcode: "12345"},
-		{Name: "Jill", City: "New York", Zipcode: "12345"},
+	if r.Header.Get("Content-Type") == "application/xml" {
+		w.Header().Set("Content-Type", "application/xml")
+		xml.NewEncoder(w).Encode(customer)
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(customer)
 	}
 }

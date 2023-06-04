@@ -32,6 +32,7 @@ func StartBankServer() {
 
 	// Defining the routes for Customers
 	muxRouter.HandleFunc("/api/customers", customerHandlers.GetAllCustomersHandler).Methods(http.MethodGet)
+	muxRouter.HandleFunc("/api/customers/{customer_id:[0-9]+}", customerHandlers.GetCustomer).Methods(http.MethodGet)
 
 	// Starting the server
 	fmt.Println("Starting the Server on ", hostServer)
