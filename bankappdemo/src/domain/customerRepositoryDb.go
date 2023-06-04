@@ -1,8 +1,8 @@
 package domain
 
 import (
+	"bankappdemo/errs"
 	"database/sql"
-	"errors"
 	"log"
 	"time"
 
@@ -13,7 +13,7 @@ type CustomerRepositoryDb struct {
 	mySqlClient *sql.DB
 }
 
-func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
+func (d CustomerRepositoryDb) FindAll() ([]Customer, *errs.AppError) {
 	findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers"
 	rows, err := d.mySqlClient.Query(findAllSql)
 
@@ -52,10 +52,10 @@ func (d CustomerRepositoryDb) FindById(id string) (*Customer, error) {
 	if err != nil {
 
 		if err == sql.ErrNoRows {
-			return nil, errors.New("Customer not found")
+			return nil, errs.NewNotFoundError("Customer not found")
 		} else {
 			log.Println("Error while Scanning Customer Table. ", err.Error())
-			return nil, errors.New("Unexpected database error")
+			return nil, errs.NewUnexpectedError("Unexpected database error")
 		}
 	}
 
