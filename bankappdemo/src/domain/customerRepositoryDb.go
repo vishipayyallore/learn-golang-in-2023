@@ -13,7 +13,7 @@ type CustomerRepositoryDb struct {
 	mySqlClient *sql.DB
 }
 
-func (d CustomerRepositoryDb) FindAll() ([]Customer, *errs.AppError) {
+func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 	findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers"
 	rows, err := d.mySqlClient.Query(findAllSql)
 
@@ -41,7 +41,7 @@ func (d CustomerRepositoryDb) FindAll() ([]Customer, *errs.AppError) {
 	return customers, nil
 }
 
-func (d CustomerRepositoryDb) FindById(id string) (*Customer, error) {
+func (d CustomerRepositoryDb) FindById(id string) (*Customer, *errs.AppError) {
 	findByIdSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers where customer_id = ?"
 	row := d.mySqlClient.QueryRow(findByIdSql, id)
 

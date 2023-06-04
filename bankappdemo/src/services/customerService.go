@@ -2,6 +2,7 @@ package services
 
 import (
 	"bankappdemo/domain"
+	"bankappdemo/errs"
 )
 
 type CustomerService interface {
