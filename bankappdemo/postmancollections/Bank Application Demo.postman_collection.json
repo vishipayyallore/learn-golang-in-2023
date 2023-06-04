@@ -10,6 +10,32 @@
 			"name": "Customers",
 			"item": [
 				{
+					"name": "POST /api/customers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GET /api/customers",
 					"request": {
 						"method": "GET",
@@ -30,6 +56,34 @@
 							"path": [
 								"api",
 								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/customers/{customer_id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/2000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"2000"
 							]
 						}
 					},
@@ -70,6 +124,77 @@
 							"path": [
 								"api",
 								"customersjson"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Demo Customers",
+			"item": [
+				{
+					"name": "GET /api/democustomers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/democustomers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"democustomers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/democustomersxml",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/democustomersxml",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"democustomersxml"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/democustomersjson",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/democustomersjson",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"democustomersjson"
 							]
 						}
 					},
