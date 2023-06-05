@@ -1,6 +1,7 @@
 package domain
 
 import (
+	"bankappdemo/errs"
 	"database/sql"
 	"log"
 	"time"
@@ -17,7 +18,7 @@ func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 	rows, err := d.mySqlClient.Query(findAllSql)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println("Error while Querying Customer Table. ", err.Error())
 
 		return nil, err
 	}
@@ -29,14 +30,36 @@ func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 		err := rows.Scan(&customer.Id, &customer.Name, &customer.City, &customer.Zipcode, &customer.DateofBirth, &customer.Status)
 
 		if err != nil {
-			log.Fatal(err)
+			log.Println("Error while Scanning Customer Table. ", err.Error())
+
+			return nil, err
 		}
 
 		customers = append(customers, customer)
-
 	}
 
 	return customers, nil
+}
+
+func (d CustomerRepositoryDb) FindById(id string) (*Customer, *errs.AppError) {
+	findByIdSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers where customer_id = ?"
+	row := d.mySqlClient.QueryRow(findByIdSql, id)
+
+	var customer Customer
+
+	err := row.Scan(&customer.Id, &customer.Name, &customer.City, &customer.Zipcode, &customer.DateofBirth, &customer.Status)
+
+	if err != nil {
+
+		if err == sql.ErrNoRows {
+			return nil, errs.NewNotFoundError("Customer not found")
+		} else {
+			log.Println("Error while Scanning Customer Table. ", err.Error())
+			return nil, errs.NewUnexpectedError("Unexpected database error")
+		}
+	}
+
+	return &customer, nil
 }
 
 func NewCustomerRepositoryDb() CustomerRepositoryDb {
