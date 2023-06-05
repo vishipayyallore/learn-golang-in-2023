@@ -3,8 +3,8 @@ package errs
 import "net/http"
 
 type AppError struct {
-	Code    int    `json:",omitempty"`
-	Message string `json:"message"`
+	Code    int    `json:",omitempty" xml:",omitempty"`
+	Message string `json:"message" xml:"message"`
 }
 
 func (e AppError) AsMessage() *AppError {
