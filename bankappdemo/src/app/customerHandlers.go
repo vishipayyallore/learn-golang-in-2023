@@ -34,20 +34,19 @@ func (ch *CustomersHandlers) GetCustomer(w http.ResponseWriter, r *http.Request)
 	customer, err := ch.customerService.GetCustomer(customerId)
 
 	if err != nil {
-		w.WriteHeader(err.Code)
 		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(err.Code)
 		json.NewEncoder(w).Encode(err.AsMessage())
-
 		return
 	}
 
 	if r.Header.Get("Content-Type") == "application/xml" {
-		w.WriteHeader(http.StatusOK)
 		w.Header().Set("Content-Type", "application/xml")
+		w.WriteHeader(http.StatusOK)
 		xml.NewEncoder(w).Encode(customer)
 	} else {
-		w.WriteHeader(http.StatusOK)
 		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(customer)
 	}
 }
