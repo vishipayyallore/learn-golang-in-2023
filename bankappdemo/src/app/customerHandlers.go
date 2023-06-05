@@ -34,19 +34,32 @@ func (ch *CustomersHandlers) GetCustomer(w http.ResponseWriter, r *http.Request)
 	customer, err := ch.customerService.GetCustomer(customerId)
 
 	if err != nil {
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(err.Code)
-		json.NewEncoder(w).Encode(err.AsMessage())
+		writeResponse(w, r, err.Code, err.AsMessage())
 		return
+	} else {
+		writeResponse(w, r, http.StatusOK, customer)
 	}
 
+	// if r.Header.Get("Content-Type") == "application/xml" {
+	// 	w.Header().Set("Content-Type", "application/xml")
+	// 	w.WriteHeader(http.StatusOK)
+	// 	xml.NewEncoder(w).Encode(customer)
+
+	// } else {
+	// 	w.Header().Set("Content-Type", "application/json")
+	// 	w.WriteHeader(http.StatusOK)
+	// 	json.NewEncoder(w).Encode(customer)
+	// }
+}
+
+func writeResponse(w http.ResponseWriter, r *http.Request, statusCode int, data interface{}) {
 	if r.Header.Get("Content-Type") == "application/xml" {
 		w.Header().Set("Content-Type", "application/xml")
-		w.WriteHeader(http.StatusOK)
-		xml.NewEncoder(w).Encode(customer)
+		w.WriteHeader(statusCode)
+		xml.NewEncoder(w).Encode(data)
 	} else {
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
-		json.NewEncoder(w).Encode(customer)
+		w.WriteHeader(statusCode)
+		json.NewEncoder(w).Encode(data)
 	}
 }
