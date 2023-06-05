@@ -20,10 +20,14 @@ func (ch *CustomersHandlers) GetAllCustomersHandler(w http.ResponseWriter, r *ht
 
 	if r.Header.Get("Content-Type") == "application/xml" {
 		w.Header().Set("Content-Type", "application/xml")
-		xml.NewEncoder(w).Encode(customers)
+		if err := xml.NewEncoder(w).Encode(customers); err != nil {
+			panic(err)
+		}
 	} else {
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(customers)
+		if err := json.NewEncoder(w).Encode(customers); err != nil {
+			panic(err)
+		}
 	}
 }
 
