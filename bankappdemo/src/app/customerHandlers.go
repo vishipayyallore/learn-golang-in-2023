@@ -38,21 +38,16 @@ func (ch *CustomersHandlers) GetCustomer(w http.ResponseWriter, r *http.Request)
 	customer, err := ch.customerService.GetCustomer(customerId)
 
 	if err != nil {
-		writeResponse(w, r, err.Code, err.AsMessage())
-		return
+		writeResponse(w, err.Code, err.AsMessage())
 	} else {
-		writeResponse(w, r, http.StatusOK, customer)
+		writeResponse(w, http.StatusOK, customer)
 	}
 }
 
-func writeResponse(w http.ResponseWriter, r *http.Request, statusCode int, data interface{}) {
-	if r.Header.Get("Content-Type") == "application/xml" {
-		w.Header().Set("Content-Type", "application/xml")
-		w.WriteHeader(statusCode)
-		xml.NewEncoder(w).Encode(data)
-	} else {
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(statusCode)
-		json.NewEncoder(w).Encode(data)
+func writeResponse(w http.ResponseWriter, statusCode int, data interface{}) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(statusCode)
+	if err := json.NewEncoder(w).Encode(data); err != nil {
+		panic(err)
 	}
 }
