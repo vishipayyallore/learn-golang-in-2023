@@ -2,7 +2,6 @@ package app
 
 import (
 	"encoding/json"
-	"encoding/xml"
 	"net/http"
 
 	"bankappdemo/services"
@@ -16,18 +15,12 @@ type CustomersHandlers struct {
 
 func (ch *CustomersHandlers) GetAllCustomersHandler(w http.ResponseWriter, r *http.Request) {
 
-	customers, _ := ch.customerService.GetAllCustomers()
+	customers, err := ch.customerService.GetAllCustomers()
 
-	if r.Header.Get("Content-Type") == "application/xml" {
-		w.Header().Set("Content-Type", "application/xml")
-		if err := xml.NewEncoder(w).Encode(customers); err != nil {
-			panic(err)
-		}
+	if err != nil {
+		writeResponse(w, err.Code, err.AsMessage())
 	} else {
-		w.Header().Set("Content-Type", "application/json")
-		if err := json.NewEncoder(w).Encode(customers); err != nil {
-			panic(err)
-		}
+		writeResponse(w, http.StatusOK, customers)
 	}
 }
 
