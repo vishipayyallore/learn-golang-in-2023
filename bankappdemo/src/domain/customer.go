@@ -12,7 +12,10 @@ type Customer struct {
 }
 
 type CustomerRepository interface {
-	FindAll() ([]Customer, *errs.AppError)
+
+	// Status is a string, but it is not a good idea to use string as a type for status.
+	// 1 == active, 0 == inactive, "" == All Customers
+	FindAll(string) ([]Customer, *errs.AppError)
 
 	FindById(string) (*Customer, *errs.AppError)
 }

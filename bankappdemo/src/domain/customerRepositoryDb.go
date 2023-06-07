@@ -13,9 +13,18 @@ type CustomerRepositoryDb struct {
 	mySqlClient *sql.DB
 }
 
-func (d CustomerRepositoryDb) FindAll() ([]Customer, *errs.AppError) {
-	findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers"
-	rows, err := d.mySqlClient.Query(findAllSql)
+func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError) {
+
+	var rows *sql.Rows
+	var err error
+
+	if status == "" {
+		findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers"
+		rows, err = d.mySqlClient.Query(findAllSql)
+	} else {
+		findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers where status = ?"
+		rows, err = d.mySqlClient.Query(findAllSql, status)
+	}
 
 	if err != nil {
 		log.Println("Error while Querying Customer Table. ", err.Error())
