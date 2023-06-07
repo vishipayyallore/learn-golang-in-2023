@@ -13,14 +13,14 @@ type CustomerRepositoryDb struct {
 	mySqlClient *sql.DB
 }
 
-func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
+func (d CustomerRepositoryDb) FindAll() ([]Customer, *errs.AppError) {
 	findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers"
 	rows, err := d.mySqlClient.Query(findAllSql)
 
 	if err != nil {
 		log.Println("Error while Querying Customer Table. ", err.Error())
 
-		return nil, err
+		return nil, errs.NewUnexpectedError("Unexpected database error")
 	}
 
 	customers := make([]Customer, 0)
@@ -32,7 +32,7 @@ func (d CustomerRepositoryDb) FindAll() ([]Customer, error) {
 		if err != nil {
 			log.Println("Error while Scanning Customer Table. ", err.Error())
 
-			return nil, err
+			return nil, errs.NewUnexpectedError("Unexpected database error")
 		}
 
 		customers = append(customers, customer)
