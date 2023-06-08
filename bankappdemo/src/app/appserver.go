@@ -1,7 +1,6 @@
 package app
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
@@ -40,7 +39,7 @@ func StartBankServer() {
 	muxRouter.HandleFunc("/api/customers/{customer_id:[0-9]+}", customersHandlers.GetCustomer).Methods(http.MethodGet)
 
 	// Starting the server
-	fmt.Println("Starting the Server on ", hostServer)
+	log.Println("Starting the Server on ", hostServer)
 	log.Fatal(http.ListenAndServe(hostServer, muxRouter))
 
 }
