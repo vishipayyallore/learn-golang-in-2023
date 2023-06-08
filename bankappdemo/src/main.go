@@ -7,8 +7,13 @@ import (
 )
 
 func main() {
-	fmt.Println("Welcome to Go!")
-	logger.Log.Info("Starting the Server on ")
+	logger.InitializeLogger()
+
+	if logger.Logger == nil {
+		fmt.Println("logger.Logger is nil")
+	}
+
+	logger.Logger.Info("Starting the Server on ")
 
 	app.StartBankServer()
 }

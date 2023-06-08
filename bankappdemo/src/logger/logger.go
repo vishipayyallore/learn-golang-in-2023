@@ -1,17 +1,21 @@
 package logger
 
-import "go.uber.org/zap"
+import (
+	"go.uber.org/zap"
+)
 
-var Log *zap.Logger
+var Logger *zap.Logger
 
-func init() {
+func InitializeLogger() {
 	var err error
 
-	Log, err := zap.NewProduction()
+	Logger, err = zap.NewProduction()
 
 	if err != nil {
 		panic(err)
 	}
 
-	Log.Info("Logger initialized")
+	defer Logger.Sync()
+
+	Logger.Info("Logger initialized")
 }
