@@ -13,7 +13,7 @@ func main() {
 		fmt.Println("logger.Logger is nil")
 	}
 
-	logger.Logger.Info("Starting the Server on ")
+	logger.Logger.Info("Starting appserver::StartBankServer()")
 
 	app.StartBankServer()
 }
