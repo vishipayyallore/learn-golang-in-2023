@@ -39,13 +39,7 @@
 					"name": "GET /api/customers",
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/xml",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "http://localhost:8080/api/customers",
 							"protocol": "http",
@@ -56,6 +50,18 @@
 							"path": [
 								"api",
 								"customers"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "inactive",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -65,16 +71,9 @@
 					"name": "GET /api/customers/{customer_id}",
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/xml",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/customers/2000",
+							"raw": "http://localhost:8080/api/customers/2002",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -83,47 +82,7 @@
 							"path": [
 								"api",
 								"customers",
-								"2000"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET /api/customersxml",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/customersxml",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"customersxml"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET /api/customersjson",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/customersjson",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"customersjson"
+								"2002"
 							]
 						}
 					},
@@ -195,6 +154,59 @@
 							"path": [
 								"api",
 								"democustomersjson"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/customersold",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/customersold",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customersold"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/customersold/{customer_id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/customersold/2000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customersold",
+								"2000"
 							]
 						}
 					},
