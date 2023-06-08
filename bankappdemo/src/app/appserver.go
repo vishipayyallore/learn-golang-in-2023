@@ -35,7 +35,7 @@ func StartBankServer() {
 	muxRouter.HandleFunc("/api/customersold/{customer_id:[0-9]+}", customersHandlersOld.GetCustomer).Methods(http.MethodGet)
 
 	customersHandlers := &CustomersHandlers{customerService: services.NewCustomerService(domain.NewCustomerRepositoryDb())}
-	// Defining the routes for Customers Old
+	// Defining the routes for Customers
 	muxRouter.HandleFunc("/api/customers", customersHandlers.GetAllCustomersHandler).Methods(http.MethodGet)
 	muxRouter.HandleFunc("/api/customers/{customer_id:[0-9]+}", customersHandlers.GetCustomer).Methods(http.MethodGet)
 
