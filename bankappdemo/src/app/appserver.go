@@ -41,6 +41,7 @@ func StartBankServer() {
 	// Starting the server
 	// logger.Log.Info("Starting the Server on ")
 	log.Println("Starting the Server on ", hostServer)
+
 	log.Fatal(http.ListenAndServe(hostServer, muxRouter))
 
 }
