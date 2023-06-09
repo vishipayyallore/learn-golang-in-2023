@@ -4,18 +4,18 @@ import (
 	"go.uber.org/zap"
 )
 
-var Logger *zap.Logger
+var log *zap.Logger
 
 func init() {
 	var err error
 
-	Logger, err = zap.NewProduction()
+	log, err = zap.NewProduction()
 
 	if err != nil {
 		panic(err)
 	}
 
-	defer Logger.Sync()
+	defer log.Sync()
 
-	Logger.Info("Logger initialized")
+	log.Info("Logger initialized")
 }
