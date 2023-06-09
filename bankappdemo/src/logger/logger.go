@@ -4,34 +4,34 @@ import (
 	"go.uber.org/zap"
 )
 
-var Logger *zap.Logger
+var _logger *zap.Logger
 
 func init() {
 	var err error
 
-	Logger, err = zap.NewProduction()
+	_logger, err = zap.NewProduction(zap.AddCallerSkip(1))
 
 	if err != nil {
 		panic(err)
 	}
 
-	defer Logger.Sync()
+	defer _logger.Sync()
 
-	Logger.Info("Logger initialized")
+	_logger.Info("Logger initialized")
 }
 
 func Info(message string, fields ...zap.Field) {
-	Logger.Info(message, fields...)
+	_logger.Info(message, fields...)
 }
 
 func Fatal(message string, fields ...zap.Field) {
-	Logger.Fatal(message, fields...)
+	_logger.Fatal(message, fields...)
 }
 
 func Debug(message string, fields ...zap.Field) {
-	Logger.Debug(message, fields...)
+	_logger.Debug(message, fields...)
 }
 
 func Error(message string, fields ...zap.Field) {
-	Logger.Error(message, fields...)
+	_logger.Error(message, fields...)
 }
