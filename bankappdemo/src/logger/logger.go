@@ -2,6 +2,7 @@ package logger
 
 import (
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 )
 
 var _logger *zap.Logger
@@ -9,7 +10,15 @@ var _logger *zap.Logger
 func init() {
 	var err error
 
-	_logger, err = zap.NewProduction(zap.AddCallerSkip(1))
+	config := zap.NewProductionConfig()
+
+	encoderConfig := zap.NewProductionEncoderConfig()
+	encoderConfig.TimeKey = "timestamp"
+	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+	encoderConfig.StacktraceKey = ""
+	config.EncoderConfig = encoderConfig
+
+	_logger, err = config.Build(zap.AddCallerSkip(1))
 
 	if err != nil {
 		panic(err)
