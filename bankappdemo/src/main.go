@@ -7,8 +7,6 @@ import (
 )
 
 func main() {
-	logger.InitializeLogger()
-
 	if logger.Logger == nil {
 		fmt.Println("logger.Logger is nil")
 	}
