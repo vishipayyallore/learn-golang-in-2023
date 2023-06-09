@@ -2,20 +2,45 @@ package logger
 
 import (
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 )
 
-var Logger *zap.Logger
+var _logger *zap.Logger
 
-func InitializeLogger() {
+func init() {
 	var err error
 
-	Logger, err = zap.NewProduction()
+	config := zap.NewProductionConfig()
+
+	encoderConfig := zap.NewProductionEncoderConfig()
+	encoderConfig.TimeKey = "timestamp"
+	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+	encoderConfig.StacktraceKey = ""
+	config.EncoderConfig = encoderConfig
+
+	_logger, err = config.Build(zap.AddCallerSkip(1))
 
 	if err != nil {
 		panic(err)
 	}
 
-	defer Logger.Sync()
+	defer _logger.Sync()
 
-	Logger.Info("Logger initialized")
+	_logger.Info("Logger initialized")
+}
+
+func Info(message string, fields ...zap.Field) {
+	_logger.Info(message, fields...)
+}
+
+func Fatal(message string, fields ...zap.Field) {
+	_logger.Fatal(message, fields...)
+}
+
+func Debug(message string, fields ...zap.Field) {
+	_logger.Debug(message, fields...)
+}
+
+func Error(message string, fields ...zap.Field) {
+	_logger.Error(message, fields...)
 }
