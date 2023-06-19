@@ -11,7 +11,7 @@ import (
 )
 
 type CustomerRepositoryDb struct {
-	mySqlClient *sql.DB
+	mySqlClient *sqlx.DB
 }
 
 func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError) {
@@ -41,20 +41,6 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError
 		return nil, errs.NewUnexpectedError("Unexpected database error")
 	}
 
-	// for rows.Next() {
-	// 	var customer Customer
-
-	// 	err := rows.Scan(&customer.Id, &customer.Name, &customer.City, &customer.Zipcode, &customer.DateofBirth, &customer.Status)
-
-	// 	if err != nil {
-	// 		logger.Error("Error while Scanning Customer Table. " + err.Error())
-
-	// 		return nil, errs.NewUnexpectedError("Unexpected database error")
-	// 	}
-
-	// 	customers = append(customers, customer)
-	// }
-
 	return customers, nil
 }
 
@@ -80,7 +66,7 @@ func (d CustomerRepositoryDb) FindById(id string) (*Customer, *errs.AppError) {
 }
 
 func NewCustomerRepositoryDb() CustomerRepositoryDb {
-	client, err := sql.Open("mysql", "root:Sample@123$@tcp(localhost:3306)/banking")
+	client, err := sqlx.Open("mysql", "root:Sample@123$@tcp(localhost:3306)/banking")
 	if err != nil {
 		panic(err)
 	}
