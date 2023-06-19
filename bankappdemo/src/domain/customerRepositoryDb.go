@@ -16,15 +16,16 @@ type CustomerRepositoryDb struct {
 
 func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError) {
 
-	var rows *sql.Rows
+	// var rows *sql.Rows
 	var err error
+	customers := make([]Customer, 0)
 
 	if status == "" {
 		findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers"
-		rows, err = d.mySqlClient.Query(findAllSql)
+		err = d.mySqlClient.Select(&customers, findAllSql)
 	} else {
 		findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers where status = ?"
-		rows, err = d.mySqlClient.Query(findAllSql, status)
+		err = d.mySqlClient.Select(&customers, findAllSql, status)
 	}
 
 	if err != nil {
@@ -33,13 +34,12 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError
 		return nil, errs.NewUnexpectedError("Unexpected database error")
 	}
 
-	customers := make([]Customer, 0)
-	err = sqlx.StructScan(rows, &customers)
-	if err != nil {
-		logger.Error("Error while Scanning Customer Table. " + err.Error())
+	// err = sqlx.StructScan(rows, &customers)
+	// if err != nil {
+	// 	logger.Error("Error while Scanning Customer Table. " + err.Error())
 
-		return nil, errs.NewUnexpectedError("Unexpected database error")
-	}
+	// 	return nil, errs.NewUnexpectedError("Unexpected database error")
+	// }
 
 	return customers, nil
 }
