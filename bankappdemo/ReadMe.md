@@ -1,4 +1,4 @@
-# Main Title
+# Sample Bank Application in GoLang
 
 Some Description
 
@@ -17,5 +17,5 @@ PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo> go work use .\src\ser
 PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo> 
 ```
 
-> 1. https://github.com/gorilla/mux
-> 1. https://github.com/go-sql-driver/mysql
+> 1. <https://github.com/gorilla/mux>
+> 1. <https://github.com/go-sql-driver/mysql>
