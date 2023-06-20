@@ -7,23 +7,25 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/jmoiron/sqlx"
 )
 
 type CustomerRepositoryDb struct {
-	mySqlClient *sql.DB
+	mySqlClient *sqlx.DB
 }
 
 func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError) {
 
-	var rows *sql.Rows
+	// var rows *sql.Rows
 	var err error
+	customers := make([]Customer, 0)
 
 	if status == "" {
 		findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers"
-		rows, err = d.mySqlClient.Query(findAllSql)
+		err = d.mySqlClient.Select(&customers, findAllSql)
 	} else {
 		findAllSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers where status = ?"
-		rows, err = d.mySqlClient.Query(findAllSql, status)
+		err = d.mySqlClient.Select(&customers, findAllSql, status)
 	}
 
 	if err != nil {
@@ -32,20 +34,12 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError
 		return nil, errs.NewUnexpectedError("Unexpected database error")
 	}
 
-	customers := make([]Customer, 0)
-	for rows.Next() {
-		var customer Customer
+	// err = sqlx.StructScan(rows, &customers)
+	// if err != nil {
+	// 	logger.Error("Error while Scanning Customer Table. " + err.Error())
 
-		err := rows.Scan(&customer.Id, &customer.Name, &customer.City, &customer.Zipcode, &customer.DateofBirth, &customer.Status)
-
-		if err != nil {
-			logger.Error("Error while Scanning Customer Table. " + err.Error())
-
-			return nil, errs.NewUnexpectedError("Unexpected database error")
-		}
-
-		customers = append(customers, customer)
-	}
+	// 	return nil, errs.NewUnexpectedError("Unexpected database error")
+	// }
 
 	return customers, nil
 }
@@ -72,7 +66,7 @@ func (d CustomerRepositoryDb) FindById(id string) (*Customer, *errs.AppError) {
 }
 
 func NewCustomerRepositoryDb() CustomerRepositoryDb {
-	client, err := sql.Open("mysql", "root:Sample@123$@tcp(localhost:3306)/banking")
+	client, err := sqlx.Open("mysql", "root:Sample@123$@tcp(localhost:3306)/banking")
 	if err != nil {
 		panic(err)
 	}

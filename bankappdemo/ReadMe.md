@@ -1,4 +1,4 @@
-# Main Title
+# Sample Bank Application in GoLang
 
 Some Description
 
@@ -14,8 +14,9 @@ go: to add module requirements and sums:
 PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo\src\services> go mod tidy
 PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo\src\services> cd ../..
 PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo> go work use .\src\services\
-PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo> 
+PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo> go get github.com/jmoiron/sqlx
 ```
 
-> 1. https://github.com/gorilla/mux
-> 1. https://github.com/go-sql-driver/mysql
+> 1. <https://github.com/gorilla/mux>
+> 1. <https://github.com/go-sql-driver/mysql>
+> 1. [go get github.com/jmoiron/sqlx](go get github.com/jmoiron/sqlx)
