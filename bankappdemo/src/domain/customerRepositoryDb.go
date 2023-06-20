@@ -45,12 +45,10 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError
 }
 
 func (d CustomerRepositoryDb) FindById(id string) (*Customer, *errs.AppError) {
-	findByIdSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers where customer_id = ?"
-	row := d.mySqlClient.QueryRow(findByIdSql, id)
-
 	var customer Customer
 
-	err := row.Scan(&customer.Id, &customer.Name, &customer.City, &customer.Zipcode, &customer.DateofBirth, &customer.Status)
+	findByIdSql := "select customer_id, name, city, zipcode, date_of_birth, status from customers where customer_id = ?"
+	err := d.mySqlClient.Get(&customer, findByIdSql, id)
 
 	if err != nil {
 
