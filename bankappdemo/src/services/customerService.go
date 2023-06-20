@@ -2,13 +2,14 @@ package services
 
 import (
 	"bankappdemo/domain"
+	"bankappdemo/dtos"
 	"bankappdemo/errs"
 )
 
 type CustomerService interface {
 	GetAllCustomers(string) ([]domain.Customer, *errs.AppError)
 
-	GetCustomer(string) (*domain.Customer, *errs.AppError)
+	GetCustomer(string) (*dtos.CustomerResponse, *errs.AppError)
 }
 
 type DefaultCustomerService struct {
@@ -27,8 +28,22 @@ func (service DefaultCustomerService) GetAllCustomers(status string) ([]domain.C
 	return service.repository.FindAll(status)
 }
 
-func (service DefaultCustomerService) GetCustomer(id string) (*domain.Customer, *errs.AppError) {
-	return service.repository.FindById(id)
+func (service DefaultCustomerService) GetCustomer(id string) (*dtos.CustomerResponse, *errs.AppError) {
+	c, err := service.repository.FindById(id)
+	if err != nil {
+		return nil, err
+	}
+
+	response := dtos.CustomerResponse{
+		Id:          c.Id,
+		Name:        c.Name,
+		City:        c.City,
+		Zipcode:     c.Zipcode,
+		DateofBirth: c.DateofBirth,
+		Status:      c.Status,
+	}
+
+	return &response, nil
 }
 
 func NewCustomerService(customerRepository domain.CustomerRepository) DefaultCustomerService {
