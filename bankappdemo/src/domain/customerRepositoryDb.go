@@ -16,7 +16,6 @@ type CustomerRepositoryDb struct {
 
 func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError) {
 
-	// var rows *sql.Rows
 	var err error
 	customers := make([]Customer, 0)
 
@@ -33,13 +32,6 @@ func (d CustomerRepositoryDb) FindAll(status string) ([]Customer, *errs.AppError
 
 		return nil, errs.NewUnexpectedError("Unexpected database error")
 	}
-
-	// err = sqlx.StructScan(rows, &customers)
-	// if err != nil {
-	// 	logger.Error("Error while Scanning Customer Table. " + err.Error())
-
-	// 	return nil, errs.NewUnexpectedError("Unexpected database error")
-	// }
 
 	return customers, nil
 }
