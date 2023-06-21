@@ -1,8 +1,10 @@
 package app
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"bankappdemo/domain"
 	"bankappdemo/logger"
@@ -12,7 +14,10 @@ import (
 )
 
 func StartBankServer() {
-	hostServer := "localhost:8080"
+	serverAddress := os.Getenv("SERVER_ADDRESS")
+	serverPort := os.Getenv("SERVER_PORT")
+
+	hostServer := fmt.Sprintf("%s:%s", serverAddress, serverPort)
 
 	// muxRouter := http.NewServeMux()
 	muxRouter := mux.NewRouter()

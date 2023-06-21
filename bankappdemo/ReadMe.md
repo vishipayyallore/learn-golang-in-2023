@@ -2,6 +2,18 @@
 
 Some Description
 
+## Set the Environment Variables
+
+```powershell
+$Env:SERVER_ADDRESS="localhost"
+$Env:SERVER_PORT=8080
+$Env:DB_USER",
+$Env:DB_PASSWD",
+$Env:DB_ADDR",
+$Env:DB_PORT",
+$Env:DB_NAME
+```
+
 ## Subtitle
 
 Some Description
@@ -18,7 +30,10 @@ PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo> go get github.com/jmo
 
 go work use .\src\dtos\
 go work sync
+
 ```
+
+
 
 > 1. <https://github.com/gorilla/mux>
 > 1. <https://github.com/go-sql-driver/mysql>
