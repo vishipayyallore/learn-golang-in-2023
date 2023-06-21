@@ -9,11 +9,11 @@ Some Description
 ```powershell
 $Env:SERVER_ADDRESS="localhost"
 $Env:SERVER_PORT=8080
-$Env:DB_USER="localhost"
-$Env:DB_PASSWD="localhost"
+$Env:DB_USER="root"
+$Env:DB_PASSWD="Sample@123$"
 $Env:DB_ADDR="localhost"
-$Env:DB_PORT="localhost"
-$Env:DB_NAME="localhost"
+$Env:DB_PORT="3306"
+$Env:DB_NAME="banking"
 ```
 
 ## Subtitle

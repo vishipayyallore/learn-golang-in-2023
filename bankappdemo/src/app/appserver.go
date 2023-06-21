@@ -13,7 +13,17 @@ import (
 	"github.com/gorilla/mux"
 )
 
+func sanityCheck() {
+	if os.Getenv("SERVER_ADDRESS") == "" || os.Getenv("SERVER_PORT") == "" {
+		logger.Error("Environment variable not defined...")
+		os.Exit(1)
+	}
+}
+
 func StartBankServer() {
+
+	sanityCheck()
+
 	serverAddress := os.Getenv("SERVER_ADDRESS")
 	serverPort := os.Getenv("SERVER_PORT")
 
