@@ -4,14 +4,16 @@ Some Description
 
 ## Set the Environment Variables
 
+> 1. "root:Sample@123$@tcp(localhost:3306)/banking"
+
 ```powershell
 $Env:SERVER_ADDRESS="localhost"
 $Env:SERVER_PORT=8080
-$Env:DB_USER",
-$Env:DB_PASSWD",
-$Env:DB_ADDR",
-$Env:DB_PORT",
-$Env:DB_NAME
+$Env:DB_USER="localhost"
+$Env:DB_PASSWD="localhost"
+$Env:DB_ADDR="localhost"
+$Env:DB_PORT="localhost"
+$Env:DB_NAME="localhost"
 ```
 
 ## Subtitle
