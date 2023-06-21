@@ -15,6 +15,9 @@ PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo\src\services> go mod t
 PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo\src\services> cd ../..
 PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo> go work use .\src\services\
 PS C:\LordKrishna\GitHub\learn-golang-in-2023\bankappdemo> go get github.com/jmoiron/sqlx
+
+go work use .\src\dtos\
+go work sync
 ```
 
 > 1. <https://github.com/gorilla/mux>
