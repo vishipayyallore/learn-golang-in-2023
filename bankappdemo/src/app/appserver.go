@@ -5,12 +5,14 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"bankappdemo/domain"
 	"bankappdemo/logger"
 	"bankappdemo/services"
 
 	"github.com/gorilla/mux"
+	"github.com/jmoiron/sqlx"
 )
 
 func sanityCheck() {
@@ -37,6 +39,7 @@ func StartBankServer() {
 	muxRouter.HandleFunc("/api", ApiRootHandler).Methods(http.MethodGet)
 
 	// Wiring up the Customer Handlers
+	dbClient := getDbClient()
 	customersHandlers := &CustomersHandlers{customerService: services.NewCustomerService(domain.NewCustomerRepositoryDb())}
 	// Defining the routes for Customers
 	muxRouter.HandleFunc("/api/customers", customersHandlers.GetAllCustomersHandler).Methods(http.MethodGet)
@@ -47,4 +50,25 @@ func StartBankServer() {
 
 	log.Fatal(http.ListenAndServe(hostServer, muxRouter))
 
+}
+
+func getDbClient() *sqlx.DB {
+	dbUser := os.Getenv("DB_USER")
+	dbPasswd := os.Getenv("DB_PASSWD")
+	dbAddr := os.Getenv("DB_ADDR")
+	dbPort := os.Getenv("DB_PORT")
+	dbName := os.Getenv("DB_NAME")
+
+	dataSource := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPasswd, dbAddr, dbPort, dbName)
+	client, err := sqlx.Open("mysql", dataSource)
+	if err != nil {
+		panic(err)
+	}
+
+	// See "Important settings" section.
+	client.SetConnMaxLifetime(time.Minute * 3)
+	client.SetMaxOpenConns(10)
+	client.SetMaxIdleConns(10)
+
+	return client
 }
