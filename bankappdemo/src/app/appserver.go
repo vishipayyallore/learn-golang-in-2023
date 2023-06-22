@@ -40,10 +40,15 @@ func StartBankServer() {
 
 	// Wiring up the Customer Handlers
 	dbClient := getDbClient()
-	customersHandlers := &CustomersHandlers{customerService: services.NewCustomerService(domain.NewCustomerRepositoryDb())}
+	customerRepositoryDb := domain.NewCustomerRepositoryDb(dbClient)
+	customerService := services.NewCustomerService(customerRepositoryDb)
+	customersHandlers := &CustomersHandlers{customerService}
+
 	// Defining the routes for Customers
 	muxRouter.HandleFunc("/api/customers", customersHandlers.GetAllCustomersHandler).Methods(http.MethodGet)
 	muxRouter.HandleFunc("/api/customers/{customer_id:[0-9]+}", customersHandlers.GetCustomer).Methods(http.MethodGet)
+
+	// accountRepositoryDb := domain.NewAccountRepositoryDb(dbClient)
 
 	// Starting the server
 	logger.Info("Starting the Server on " + hostServer)
