@@ -35,8 +35,6 @@ go work sync
 
 ```
 
-
-
 > 1. <https://github.com/gorilla/mux>
 > 1. <https://github.com/go-sql-driver/mysql>
 > 1. [go get github.com/jmoiron/sqlx](go get github.com/jmoiron/sqlx)
