@@ -4,9 +4,6 @@ import (
 	"bankappdemo/errs"
 	"bankappdemo/logger"
 	"database/sql"
-	"fmt"
-	"os"
-	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
@@ -57,27 +54,27 @@ func (d CustomerRepositoryDb) FindById(id string) (*Customer, *errs.AppError) {
 	return &customer, nil
 }
 
-func NewCustomerRepositoryDb() CustomerRepositoryDb {
+func NewCustomerRepositoryDb(dbClient *sqlx.DB) CustomerRepositoryDb {
 
-	dbUser := os.Getenv("DB_USER")
-	dbPasswd := os.Getenv("DB_PASSWD")
-	dbAddr := os.Getenv("DB_ADDR")
-	dbPort := os.Getenv("DB_PORT")
-	dbName := os.Getenv("DB_NAME")
+	// dbUser := os.Getenv("DB_USER")
+	// dbPasswd := os.Getenv("DB_PASSWD")
+	// dbAddr := os.Getenv("DB_ADDR")
+	// dbPort := os.Getenv("DB_PORT")
+	// dbName := os.Getenv("DB_NAME")
 
-	dataSource := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPasswd, dbAddr, dbPort, dbName)
+	// dataSource := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPasswd, dbAddr, dbPort, dbName)
 
-	client, err := sqlx.Open("mysql", dataSource)
-	if err != nil {
-		panic(err)
-	}
+	// client, err := sqlx.Open("mysql", dataSource)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	// See "Important settings" section.
-	client.SetConnMaxLifetime(time.Minute * 3)
-	client.SetMaxOpenConns(10)
-	client.SetMaxIdleConns(10)
+	// // See "Important settings" section.
+	// client.SetConnMaxLifetime(time.Minute * 3)
+	// client.SetMaxOpenConns(10)
+	// client.SetMaxIdleConns(10)
 
 	return CustomerRepositoryDb{
-		mySqlClient: client,
+		mySqlClient: dbClient,
 	}
 }
