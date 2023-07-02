@@ -48,7 +48,10 @@ func StartBankServer() {
 	muxRouter.HandleFunc("/api/customers", customersHandlers.GetAllCustomersHandler).Methods(http.MethodGet)
 	muxRouter.HandleFunc("/api/customers/{customer_id:[0-9]+}", customersHandlers.GetCustomer).Methods(http.MethodGet)
 
-	// accountRepositoryDb := domain.NewAccountRepositoryDb(dbClient)
+	accountRepositoryDb := domain.NewAccountRepositoryDb(dbClient)
+	accountService := services.NewAccountService(accountRepositoryDb)
+	accountHandler := AccountHandler{accountService}
+	muxRouter.HandleFunc("/api/customers/{customer_id:[0-9]+}/account", accountHandler.NewAccount).Methods(http.MethodPost)
 
 	// Starting the server
 	logger.Info("Starting the Server on " + hostServer)
