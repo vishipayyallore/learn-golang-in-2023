@@ -10,7 +10,7 @@ const dbTSLayout = "2006-01-02 15:04:05"
 
 type AccountService interface {
 	NewAccount(request dtos.NewAccountRequest) (*dtos.NewAccountResponse, *errs.AppError)
-	// MakeTransaction(request dto.TransactionRequest) (*dto.TransactionResponse, *errs.AppError)
+	// MakeTransaction(request dtos.TransactionRequest) (*dtos.TransactionResponse, *errs.AppError)
 }
 
 type DefaultAccountService struct {
@@ -27,4 +27,8 @@ func (s DefaultAccountService) NewAccount(req dtos.NewAccountRequest) (*dtos.New
 	} else {
 		return newAccount.ToNewAccountResponseDto(), nil
 	}
+}
+
+func NewAccountService(repo domain.AccountRepository) DefaultAccountService {
+	return DefaultAccountService{repo}
 }
