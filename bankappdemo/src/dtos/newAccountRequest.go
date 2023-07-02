@@ -1,6 +1,9 @@
 package dtos
 
-import "strings"
+import (
+	"bankappdemo/errs"
+	"strings"
+)
 
 type NewAccountRequest struct {
 	CustomerId  string  `json:"customer_id"`
