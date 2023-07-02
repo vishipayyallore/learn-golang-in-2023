@@ -18,10 +18,12 @@ type DefaultAccountService struct {
 }
 
 func (s DefaultAccountService) NewAccount(req dtos.NewAccountRequest) (*dtos.NewAccountResponse, *errs.AppError) {
-	// if err := req.Validate(); err != nil {
-	// 	return nil, err
-	// }
+	if err := req.Validate(); err != nil {
+		return nil, err
+	}
+
 	account := domain.NewAccount(req.CustomerId, req.AccountType, req.Amount)
+
 	if newAccount, err := s.repo.Save(account); err != nil {
 		return nil, err
 	} else {
