@@ -1,6 +1,8 @@
 package domain
 
-import "bankappdemo/dto"
+import (
+	"bankappdemo/dtos"
+)
 
 const WITHDRAWAL = "withdrawal"
 
@@ -19,8 +21,8 @@ func (t Transaction) IsWithdrawal() bool {
 	return false
 }
 
-func (t Transaction) ToDto() dto.TransactionResponse {
-	return dto.TransactionResponse{
+func (t Transaction) ToDto() dtos.TransactionResponse {
+	return dtos.TransactionResponse{
 		TransactionId:   t.TransactionId,
 		AccountId:       t.AccountId,
 		Amount:          t.Amount,
