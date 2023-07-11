@@ -35,3 +35,10 @@ func NewAccount(customerId, accountType string, amount float64) Account {
 		Status:      "1",
 	}
 }
+
+func (a Account) CanWithdraw(amount float64) bool {
+	if a.Amount < amount {
+		return false
+	}
+	return true
+}

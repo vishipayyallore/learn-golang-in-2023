@@ -59,7 +59,7 @@ func StartBankServer() {
 
 	muxRouter.HandleFunc("/api/customers/{customer_id:[0-9]+}/account", accountHandler.NewAccount)
 				.Methods(http.MethodPost)
-				.Name("AddNewAccount")
+				.Name("NewAccount")
 
 	muxRouter.HandleFunc("/api/customers/{customer_id:[0-9]+}/account/{account_id:[0-9]+}", accountHandler.MakeTransaction)
 				.Methods(http.MethodPost)
