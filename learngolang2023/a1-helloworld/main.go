@@ -16,6 +16,6 @@ func main() {
 	Hello World
 	~GoLang~
 
-	Multi line comment.
+	Multi line string.
 	`)
 }
