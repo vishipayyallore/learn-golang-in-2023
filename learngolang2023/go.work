@@ -3,4 +3,5 @@ go 1.20
 use (
 	./a1-helloworld
 	./a2-variables
+	./a9-tour-basics
 )

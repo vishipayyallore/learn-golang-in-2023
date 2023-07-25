@@ -4,6 +4,11 @@
 
 > 1. [https://gobyexample.com](https://gobyexample.com)
 
+```text
+https://go.dev/tour/basics/3
+https://gobyexample.com/values
+```
+
 ## Table of Contents
 
 Few basic commands to get started with GoLang
@@ -11,6 +16,12 @@ Few basic commands to get started with GoLang
 ## Few basic commands to get started with GoLang
 
 ```bash
+go mod init learngolang2023/a9-tour-basics
+go mod tidy
+go work use ./a9-tour-basics
+go build .
+go run .
+
 go mod init learngolang2023/a2-variables
 go mod tidy
 go work use ./a2-variables
