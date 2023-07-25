@@ -21,7 +21,7 @@ func main() {
 	b, c, d, _, f := 0, 1, 2, 3, "happiness"
 	fmt.Println(b, c, d, f)
 
-	// this would not work
+	// this would not work, because e is not used
 	/*
 		b, c, d, e := 0, 1, 2, 3
 		fmt.Println(b, c, d)
