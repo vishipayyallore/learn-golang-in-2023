@@ -11,8 +11,20 @@ Few basic commands to get started with GoLang
 ## Few basic commands to get started with GoLang
 
 ```bash
-go run .
+go mod init learngolang2023/a2-variables
+go mod tidy
+go work use ./a2-variables
 go build .
+go run .
+
+go mod init learngolang2023/a1-helloworld
+go mod tidy
+go work use ./a1-helloworld
+go build .
+go run .
+
+go build .
+go run .
 go fmt
 go mod init
 go mod tidy
