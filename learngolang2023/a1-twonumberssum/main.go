@@ -5,8 +5,32 @@ import (
 )
 
 func main() {
-	output := findTwoNumbersSumBruteForce([]int{3, 5, -4, 8, 11, 1, -1, 6}, 10)
-	fmt.Println(output[0], output[1])
+	inputSets := generateTwoNumbersSumInputs()
+
+	for i, inputSet := range inputSets {
+		fmt.Printf("Input Set %d:\n", i+1)
+		if inputSet.InputNumbers == nil {
+			fmt.Println("Error: Input array is nil.")
+			continue
+		}
+		fmt.Printf("Input Array: %v\n", inputSet.InputNumbers)
+		fmt.Printf("Sum to Match: %d\n\n", inputSet.SumToMatch)
+	}
+}
+
+type twoNumbersSumInputSet struct {
+	InputNumbers []int
+	SumToMatch   int
+}
+
+func generateTwoNumbersSumInputs() []twoNumbersSumInputSet {
+	return []twoNumbersSumInputSet{
+		{InputNumbers: []int{3, 5, -4, 8, 11, 1, -1, 6}, SumToMatch: 10},
+		{InputNumbers: []int{2, 4, 6, 8, 10}, SumToMatch: 12},
+		{InputNumbers: []int{-3, 1, 5, 8, -2}, SumToMatch: 6},
+		{InputNumbers: []int{0, 1, 2, 3, 4}, SumToMatch: 8},
+		{InputNumbers: nil, SumToMatch: 15}, // Test case with nil InputNumbers
+	}
 }
 
 func findTwoNumbersSumBruteForce(inputNumbers []int, sumToMatch int) []int {
