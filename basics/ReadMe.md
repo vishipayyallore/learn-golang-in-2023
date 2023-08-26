@@ -18,14 +18,20 @@ Few basic commands to get started with GoLang
 ```bash
 go work init # Inside the parent folder
 
-go mod init basics/A1HelloGophers
+go fmt
+go work sync
+
+go mod init basics/A2FormatPrint
 go mod tidy
 go work use .
 go build .
 go run .
 
-go fmt
-go work sync
+go mod init basics/A1HelloGophers
+go mod tidy
+go work use .
+go build .
+go run .
 ```
 
 ## Few basic points to remember

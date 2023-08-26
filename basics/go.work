@@ -1,3 +1,6 @@
 go 1.21.0
 
-use ./A1HelloGophers
+use (
+	./A1HelloGophers
+	./A2FormatPrint
+)
