@@ -21,6 +21,13 @@ go work init # Inside the parent folder
 go fmt
 go work sync
 
+go mod init basics/A3StringLiterals
+go mod tidy
+go work use .
+go build .
+go run .
+
+
 go mod init basics/A2FormatPrint
 go mod tidy
 go work use .
