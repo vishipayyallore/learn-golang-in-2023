@@ -4,4 +4,5 @@ use (
 	./A1HelloGophers
 	./A2FormatPrint
 	./A3StringLiterals
+	./A4PackagesDemo
 )

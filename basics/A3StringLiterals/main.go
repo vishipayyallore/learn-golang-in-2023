@@ -6,6 +6,8 @@ func main() {
 
 	fmt.Println("Hello Gophers! ❤️💕😊👍😁(❁´◡`❁)£¥©🙌👌🎶😎🐼🦄🦁🐶😺🤓")
 
+	fmt.Println("Hello, 世界")
+
 	// raw string literal
 	fmt.Println(`
 	UTF-8 saves space. 
