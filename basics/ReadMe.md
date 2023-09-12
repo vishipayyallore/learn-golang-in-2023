@@ -17,13 +17,19 @@ Few basic commands to get started with GoLang
 
 ### GoLang Basics
 
-> 1. https://go.dev/tour/basics/1
+> 1. [https://go.dev/tour/basics/1](https://go.dev/tour/basics/1)
 
 ```bash
 go work init # Inside the parent folder
 
 go fmt
 go work sync
+
+go mod init basics/A5VariablesDemo
+go mod tidy
+go work use .
+go build .
+go run .
 
 go mod init basics/A4PackagesDemo
 go mod tidy
