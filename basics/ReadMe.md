@@ -17,7 +17,7 @@ Few basic commands to get started with GoLang
 
 ### GoLang Basics
 
-> 1. [https://go.dev/tour/basics/1](https://go.dev/tour/basics/1)
+> 1. [https://go.dev/tour/basics/3](https://go.dev/tour/basics/3)
 
 ```bash
 go work init # Inside the parent folder
