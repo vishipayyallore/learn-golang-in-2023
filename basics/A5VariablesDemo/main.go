@@ -1,11 +1,15 @@
 package main
 
 import (
+	"basics/A5VariablesDemo/doctor"
 	"fmt"
 	"math/rand"
 )
 
 func main() {
+
+	displayMessage(doctor.Intro())
+
 	favoriteNumberMessage := fmt.Sprintf("Favorite number is: %d", rand.Intn(10))
 	fmt.Println(favoriteNumberMessage)
 
