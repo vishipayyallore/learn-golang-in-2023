@@ -11,6 +11,8 @@ func main() {
 
 	fmt.Printf("Now you have %g problems.\n", math.Sqrt(7))
 
+	fmt.Printf("PI Value is %g.\n", math.Pi)
+
 	displayMessage("Hello Gophers! ❤️💕😊👍😁(❁´◡`❁)£¥©🙌👌🎶😎🐼🦄🦁🐶😺🤓")
 }
 
