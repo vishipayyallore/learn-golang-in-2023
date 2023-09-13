@@ -21,8 +21,10 @@ func main() {
 	num2 = 7
 	fmt.Printf("Sum of %d and %d is %d.\n", num1, num2, addNumbersV1(num1, num2))
 
-	a, b := swap("hello", "world")
-	fmt.Println(a, b)
+	a, b := "world", "hello"
+	fmt.Printf("Values are %s and %s.\n", a, b)
+	a, b = swap(a, b)
+	fmt.Printf("Swapped values are %s and %s.\n", a, b)
 }
 
 func addNumbers(x int, y int) int {
