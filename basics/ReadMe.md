@@ -3,11 +3,7 @@
 **Reference(s):**
 
 > 1. [https://gobyexample.com](https://gobyexample.com)
-
-```text
-https://go.dev/tour/basics/3
-https://gobyexample.com/values
-```
+> 1. [https://go.dev/tour/basics/7](https://go.dev/tour/basics/7)
 
 ## Table of Contents
 
@@ -16,8 +12,6 @@ Few basic commands to get started with GoLang
 ## Few basic commands to get started with GoLang
 
 ### GoLang Basics
-
-> 1. [https://go.dev/tour/basics/3](https://go.dev/tour/basics/3)
 
 ```bash
 go work init # Inside the parent folder
