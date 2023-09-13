@@ -5,4 +5,5 @@ use (
 	./A2FormatPrint
 	./A3StringLiterals
 	./A4PackagesDemo
+	./A5VariablesDemo
 )
