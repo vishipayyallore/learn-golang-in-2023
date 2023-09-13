@@ -21,6 +21,10 @@ func main() {
 	num2 = 7
 	fmt.Printf("Sum of %d and %d is %d.\n", num1, num2, addNumbersV1(num1, num2))
 
+	sum := 17
+	x, y := split(sum)
+	fmt.Printf("Sum of %d is %d and %d. This is using Split() method.\n", sum, x, y)
+
 	a, b := "world", "hello"
 	fmt.Printf("Values are %s and %s.\n", a, b)
 	a, b = swap(a, b)
@@ -39,4 +43,10 @@ func addNumbersV1(x, y int) int {
 // A function can return any number of results.
 func swap(x, y string) (string, string) {
 	return y, x
+}
+
+func split(sum int) (x, y int) {
+	x = sum * 4 / 9
+	y = sum - x
+	return
 }
