@@ -20,6 +20,9 @@ func main() {
 	num1 = 5
 	num2 = 7
 	fmt.Printf("Sum of %d and %d is %d.\n", num1, num2, addNumbersV1(num1, num2))
+
+	a, b := swap("hello", "world")
+	fmt.Println(a, b)
 }
 
 func addNumbers(x int, y int) int {
@@ -29,4 +32,9 @@ func addNumbers(x int, y int) int {
 // When two or more consecutive named function parameters share a type, you can omit the type from all but the last.
 func addNumbersV1(x, y int) int {
 	return x + y
+}
+
+// A function can return any number of results.
+func swap(x, y string) (string, string) {
+	return y, x
 }
