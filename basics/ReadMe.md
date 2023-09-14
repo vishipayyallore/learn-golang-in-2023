@@ -3,11 +3,7 @@
 **Reference(s):**
 
 > 1. [https://gobyexample.com](https://gobyexample.com)
-
-```text
-https://go.dev/tour/basics/3
-https://gobyexample.com/values
-```
+> 1. [https://go.dev/tour/basics/7](https://go.dev/tour/basics/7)
 
 ## Table of Contents
 
@@ -17,13 +13,17 @@ Few basic commands to get started with GoLang
 
 ### GoLang Basics
 
-> 1. [https://go.dev/tour/basics/3](https://go.dev/tour/basics/3)
-
 ```bash
 go work init # Inside the parent folder
 
 go fmt
 go work sync
+
+go mod init basics/A6FunctionsDemo
+go mod tidy
+go work use .
+go build .
+go run .
 
 go mod init basics/A5VariablesDemo
 go mod tidy
